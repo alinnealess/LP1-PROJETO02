@@ -6,7 +6,7 @@ Professor::Professor() {}
 
 // Construtor parametrizado
 Professor::Professor(Nivel nivel, Formacao formacao, const std::string &disciplina)
-    : nivelProfessor(nivel), formacaoProfessor(formacao), disciplina(disciplina) {}
+    : Funcionario(), nivelProfessor(nivel), formacaoProfessor(formacao), disciplina(disciplina) {}
 
 // Métodos getter e setter para o nível
 Professor::Nivel Professor::getNivel() const

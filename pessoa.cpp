@@ -2,52 +2,51 @@
 #include "pessoa.hpp"
 #include "endereco.hpp"
 
+using namespace std;
 
-
-
-Pessoa::Pessoa(const std::string &nome, const std::string &cpf, const std::string &dataNascimento, const std::string &genero, const Endereco &endereco)
+Pessoa::Pessoa(const string &nome, const string &cpf, const string &dataNascimento, const string &genero, const Endereco &endereco)
     : nome(nome), cpf(cpf), dataNascimento(dataNascimento), genero(genero), endereco(endereco) {}
 
 // Métodos getter e setter para 'nome'
-const std::string &Pessoa::getNome() const
+const string &Pessoa::getNome() const
 {
     return this->nome;
 }
 
-void Pessoa::setNome(const std::string &nome)
+void Pessoa::setNome(const string &nome)
 {
     this->nome = nome;
 }
 
 // Métodos getter e setter para 'cpf'
-const std::string &Pessoa::getCPF() const
+const string &Pessoa::getCPF() const
 {
     return this->cpf;
 }
 
-void Pessoa::setCPF(const std::string &cpf)
+void Pessoa::setCPF(const string &cpf)
 {
     this->cpf = cpf;
 }
 
 // Métodos getter e setter para 'dataNascimento'
-const std::string &Pessoa::getDataNascimento() const
+const string &Pessoa::getDataNascimento() const
 {
     return this->dataNascimento;
 }
 
-void Pessoa::setDataNascimento(const std::string &dataNascimento)
+void Pessoa::setDataNascimento(const string &dataNascimento)
 {
     this->dataNascimento = dataNascimento;
 }
 
 // Métodos getter e setter para 'genero'
-const std::string &Pessoa::getGenero() const
+const string &Pessoa::getGenero() const
 {
     return this->genero;
 }
 
-void Pessoa::setGenero(const std::string &genero)
+void Pessoa::setGenero(const string &genero)
 {
     this->genero = genero;
 }

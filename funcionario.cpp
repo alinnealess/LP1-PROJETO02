@@ -2,11 +2,12 @@
 
 using namespace std;
 
+// Construtor padrão
+Funcionario::Funcionario() {}
+
 // Construtor parametrizado
-Funcionario::Funcionario(const string &matricula, float salario, const string &departamento,
-                         int cargaHoraria, const string &dataIngresso)
-    : matricula(matricula), salario(salario), departamento(departamento),
-      cargaHoraria(cargaHoraria), dataIngresso(dataIngresso) {}
+Funcionario::Funcionario(const string &matricula, float salario, const string &departamento, int cargaHoraria, const string &dataIngresso)
+    : Pessoa(), matricula(matricula), salario(salario), departamento(departamento), cargaHoraria(cargaHoraria), dataIngresso(dataIngresso) {}
 
 // Métodos getter e setter para a matrícula
 const string &Funcionario::getMatricula() const

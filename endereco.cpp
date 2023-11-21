@@ -55,5 +55,3 @@ void Endereco::setCep(const string &value)
     this->cep = value;
 }
 
-Endereco::Endereco()
-{}

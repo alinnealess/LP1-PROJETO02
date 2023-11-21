@@ -17,8 +17,7 @@ public:
     Funcionario();
 
     // Construtor parametrizado
-    Funcionario(const std::string& matricula, float salario, const std::string& departamento,
-                int cargaHoraria, const std::string& dataIngresso);
+     Funcionario(const std::string &matricula, float salario, const std::string &departamento, int cargaHoraria, const std::string &dataIngresso);
 
     // Métodos getter e setter para a matrícula
     const std::string& getMatricula() const;
@@ -37,8 +36,8 @@ public:
     void setCargaHoraria(int value);
 
     // Métodos getter e setter para a data de ingresso
-    const std::string& getDataIngresso() const;
-    void setDataIngresso(const std::string& value);
+    const std::string &getDataIngresso() const;
+    void setDataIngresso(const std::string &value);
 };
 
 #endif
