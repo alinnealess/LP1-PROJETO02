@@ -3,16 +3,13 @@
 
 using namespace std;
 
-// Implementação dos métodos da classe Endereco
+// Implementação dos métodos getters da classe Endereco
+Endereco::Endereco(string rua, int numero, string bairro, string cidade, string cep)
+    : rua(rua), numero(numero), bairro(bairro), cidade(cidade), cep(cep) {}
 
 string Endereco::getRua() const
 {
     return this->rua;
-}
-
-void Endereco::setRua(const string &value)
-{
-    this->rua = value;
 }
 
 int Endereco::getNumero() const
@@ -20,19 +17,9 @@ int Endereco::getNumero() const
     return this->numero;
 }
 
-void Endereco::setNumero(int value)
-{
-    this->numero = value;
-}
-
 std::string Endereco::getBairro() const
 {
     return this->bairro;
-}
-
-void Endereco::setBairro(const string &value)
-{
-    this->bairro = value;
 }
 
 std::string Endereco::getCidade() const
@@ -40,18 +27,34 @@ std::string Endereco::getCidade() const
     return this->cidade;
 }
 
-void Endereco::setCidade(const string &value)
-{
-    this->cidade = value;
-}
-
 string Endereco::getCep() const
 {
     return this->cep;
 }
 
-void Endereco::setCep(const string &value)
+// Implementação dos métodos setters da classe Endereco
+
+void Endereco::setRua(string rua)
 {
-    this->cep = value;
+    this->rua = rua;
 }
 
+void Endereco::setNumero(int numero)
+{
+    this->numero = numero;
+}
+
+void Endereco::setBairro(string bairro)
+{
+    this->bairro = bairro;
+}
+
+void Endereco::setCidade(string cidade)
+{
+    this->cidade = cidade;
+}
+
+void Endereco::setCep(string cep)
+{
+    this->cep = cep;
+}

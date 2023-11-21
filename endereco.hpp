@@ -13,23 +13,25 @@ private:
   std::string cep;
 
 public:
-  // Construtor padrão
-  Endereco() {}
 
+Endereco::Endereco(){}
+
+// Construtor parametrizado
+  Endereco(std::string rua, int numero, std::string bairro, std::string cidade, std::string cep);
+
+  // Métodos getters e setters
   std::string getRua() const;
-  void setRua(const std::string &value);
-
   int getNumero() const;
-  void setNumero(int value);
-
   std::string getBairro() const;
-  void setBairro(const std::string &value);
-
   std::string getCidade() const;
-  void setCidade(const std::string &value);
-
   std::string getCep() const;
-  void setCep(const std::string &value);
+
+  // Métodos setters
+  void setRua(std::string rua);
+  void setNumero(int numero);
+  void setBairro(std::string bairro);
+  void setCidade(std::string cidade);
+  void setCep(std::string cep);
 };
 
 #endif

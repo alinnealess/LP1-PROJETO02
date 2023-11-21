@@ -14,34 +14,25 @@ private:
   Endereco endereco;
 
 public:
-  // Construtor padrão
-  Pessoa() {}
-
+Pessoa::Pessoa()
+{
+  // Inicializa os atributos da classe
+}
   // Construtor parametrizado
-  Pessoa(const std::string &nome, const std::string &cpf, const std::string &dataNascimento, const std::string &genero, const Endereco &endereco);
+   Pessoa(std::string nome, std::string cpf, std::string dataNascimento, std::string genero, std::string rua, int numero, std::string bairro, std::string cidade, std::string cep);
 
-  // Métodos getter e setter para o atributo 'nome'
-  const std::string &getNome() const;
-  void setNome(const std::string &nome);
 
-  // Métodos getter e setter para o atributo 'cpf'
-  const std::string &getCPF() const;
-  void setCPF(const std::string &cpf);
+  std::string getNome() const;
+  std::string getCpf() const;
+  std::string getDataNascimento() const;
+  std::string getGenero() const;
+  Endereco getEndereco() const;
 
-  // Métodos getter e setter para o atributo 'dataNascimento'
-  const std::string &getDataNascimento() const;
-  void setDataNascimento(const std::string &dataNascimento);
-
-  // Métodos getter e setter para o atributo 'genero'
-  const std::string &getGenero() const;
-  void setGenero(const std::string &genero);
-
-  // Métodos getter e setter para o atributo 'endereco'
-  const Endereco &getEndereco() const;
-  void setEndereco(const Endereco &endereco);
-
-  // Destrutor virtual
-  virtual ~Pessoa() = default;
+  void setNome(std::string nome);
+  void setCpf(std::string cpf);
+  void setDataNascimento(std::string dataNascimento);
+  void setGenero(std::string genero);
+  void setEndereco(std::string rua, int numero, std::string bairro, std::string cidade, std::string cep);
 };
 
 #endif

@@ -1,63 +1,62 @@
 #include <iostream>
 #include "pessoa.hpp"
-#include "endereco.hpp"
 
 using namespace std;
 
-Pessoa::Pessoa(const string &nome, const string &cpf, const string &dataNascimento, const string &genero, const Endereco &endereco)
-    : nome(nome), cpf(cpf), dataNascimento(dataNascimento), genero(genero), endereco(endereco) {}
+Pessoa::Pessoa(string nome, string cpf, string dataNascimento, string genero, string rua, int numero, string bairro, string cidade, string cep)
+    : Endereco(rua, numero, bairro, cidade, cep), nome(nome), cpf(cpf), dataNascimento(dataNascimento), genero(genero) {}
 
 // Métodos getter e setter para 'nome'
-const string &Pessoa::getNome() const
+string Pessoa::getNome() const
 {
     return this->nome;
 }
 
-void Pessoa::setNome(const string &nome)
-{
-    this->nome = nome;
-}
-
-// Métodos getter e setter para 'cpf'
-const string &Pessoa::getCPF() const
+string Pessoa::getCpf() const
 {
     return this->cpf;
 }
 
-void Pessoa::setCPF(const string &cpf)
-{
-    this->cpf = cpf;
-}
-
-// Métodos getter e setter para 'dataNascimento'
-const string &Pessoa::getDataNascimento() const
+string Pessoa::getDataNascimento() const
 {
     return this->dataNascimento;
 }
 
-void Pessoa::setDataNascimento(const string &dataNascimento)
-{
-    this->dataNascimento = dataNascimento;
-}
-
-// Métodos getter e setter para 'genero'
-const string &Pessoa::getGenero() const
+string Pessoa::getGenero() const
 {
     return this->genero;
 }
 
-void Pessoa::setGenero(const string &genero)
-{
-    this->genero = genero;
-}
-
-// Métodos getter e setter para 'endereco'
-const Endereco &Pessoa::getEndereco() const
+Endereco Pessoa::getEndereco() const
 {
     return this->endereco;
 }
 
-void Pessoa::setEndereco(const Endereco &endereco)
+void Pessoa::setNome(string nome)
 {
-    this->endereco = endereco;
+    this->nome = nome;
+}
+
+void Pessoa::setCpf(string cpf)
+{
+    this->cpf = cpf;
+}
+
+void Pessoa::setDataNascimento(string dataNascimento)
+{
+    this->dataNascimento = dataNascimento;
+}
+
+void Pessoa::setGenero(string genero)
+{
+    this->genero = genero;
+}
+
+void Pessoa::setEndereco(string rua, int numero, string bairro, string cidade, string cep)
+{
+    this->endereco.setRua(rua);
+    this->endereco.setNumero(numero);
+    this->endereco.setBairro(bairro);
+    this->endereco.setCidade(cidade);
+    this->endereco.setCep(cep);
 }

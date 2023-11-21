@@ -2,22 +2,27 @@
 
 using namespace std;
 
-// Construtor padrão
-Funcionario::Funcionario() {}
 
 // Construtor parametrizado
-Funcionario::Funcionario(const string &matricula, float salario, const string &departamento, int cargaHoraria, const string &dataIngresso)
-    : Pessoa(), matricula(matricula), salario(salario), departamento(departamento), cargaHoraria(cargaHoraria), dataIngresso(dataIngresso) {}
+Funcionario::Funcionario(std::string nome, std::string cpf, std::string dataNascimento, std::string genero,
+                         std::string rua, int numero, std::string bairro, std::string cidade, std::string cep,
+                         std::string matricula, float salario, std::string departamento, int cargaHoraria, std::string dataIngresso)
+    : Pessoa(nome, cpf, dataNascimento, genero, rua, numero, bairro, cidade, cep),
+      matricula(matricula),
+      salario(salario),
+      departamento(departamento),
+      cargaHoraria(cargaHoraria),
+      dataIngresso(dataIngresso) {}
 
 // Métodos getter e setter para a matrícula
-const string &Funcionario::getMatricula() const
+string Funcionario::getMatricula() const
 {
     return this->matricula;
 }
 
-void Funcionario::setMatricula(const string &value)
+void Funcionario::setMatricula(string matricula)
 {
-    this->matricula = value;
+    this->matricula = matricula;
 }
 
 // Métodos getter e setter para o salário
@@ -26,20 +31,20 @@ float Funcionario::getSalario() const
     return this->salario;
 }
 
-void Funcionario::setSalario(float value)
+void Funcionario::setSalario(float salario)
 {
-    this->salario = value;
+    this->salario = salario;
 }
 
 // Métodos getter e setter para o departamento
-const string &Funcionario::getDepartamento() const
+string Funcionario::getDepartamento() const
 {
     return this->departamento;
 }
 
-void Funcionario::setDepartamento(const string &value)
+void Funcionario::setDepartamento(string departamento)
 {
-    this->departamento = value;
+    this->departamento = departamento;
 }
 
 // Métodos getter e setter para a carga horária
@@ -48,18 +53,18 @@ int Funcionario::getCargaHoraria() const
     return this->cargaHoraria;
 }
 
-void Funcionario::setCargaHoraria(int value)
+void Funcionario::setCargaHoraria(int cargaHoraria)
 {
-    this->cargaHoraria = value;
+    this->cargaHoraria = cargaHoraria;
 }
 
 // Métodos getter e setter para a data de ingresso
-const string &Funcionario::getDataIngresso() const
+string Funcionario::getDataIngresso() const
 {
     return this->dataIngresso;
 }
 
-void Funcionario::setDataIngresso(const string &value)
+void Funcionario::setDataIngresso(string dataIngresso)
 {
-    this->dataIngresso = value;
+    this->dataIngresso = dataIngresso;
 }
