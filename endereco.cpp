@@ -3,10 +3,10 @@
 
 using namespace std;
 
-// Implementação dos métodos getters da classe Endereco
-Endereco::Endereco(string rua, int numero, string bairro, string cidade, string cep)
-    : rua(rua), numero(numero), bairro(bairro), cidade(cidade), cep(cep) {}
+Endereco::Endereco(std::string rua, int numero, std::string bairro, std::string cidade, std::string cep)
+    : rua(rua), numero(numero), bairro(bairro), cidade(cidade), cep(cep){}
 
+// Implementação dos métodos getters da classe Endereco
 string Endereco::getRua() const
 {
     return this->rua;

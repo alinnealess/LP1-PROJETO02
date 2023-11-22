@@ -12,11 +12,11 @@ private:
 
 public:
     // Métodos para cadastrar e listar professores
-    void cadastrarProfessor(const Professor& professor);
+    void cadastrarProfessor(Professor professor);
     void listarProfessores() const;
 
     // Métodos para cadastrar e listar tecnicosADM
-    void cadastrarTecnicoADM(const TecnicoAdm& tecnicoADM);
+    void cadastrarTecnicoADM(TecnicoAdm tecnicoADM);
     void listarTecnicosADM() const;
 
     // Métodos para deletar professores e tecnicosADM

@@ -1,12 +1,14 @@
 #include "BancoDAO.hpp"
 #include <iostream>
 
-void BancoDAO::cadastrarProfessor(const Professor& professor) {
+using namespace std;
+
+void BancoDAO::cadastrarProfessor(Professor professor) {
     professores.push_back(professor);
 }
 
 void BancoDAO::listarProfessores() const {
-    std::cout << "Lista de Professores:" << std::endl;
+    cout << "Lista de Professores:" << endl;
     for (const auto& professor : professores) {
         // Faça algo com os dados do professor (por exemplo, imprimir na tela)
     }

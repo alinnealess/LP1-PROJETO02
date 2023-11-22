@@ -13,11 +13,9 @@ private:
   std::string cep;
 
 public:
-
-Endereco::Endereco(){}
-
-// Construtor parametrizado
-  Endereco(std::string rua, int numero, std::string bairro, std::string cidade, std::string cep);
+  Endereco() {}
+  // Construtor parametrizado
+    Endereco(std::string rua, int numero, std::string bairro, std::string cidade, std::string cep);
 
   // Métodos getters e setters
   std::string getRua() const;

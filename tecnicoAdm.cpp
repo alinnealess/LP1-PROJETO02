@@ -1,5 +1,4 @@
 #include "tecnicoAdm.hpp"
-// #include "funcionario.hpp"
 
 using namespace std;
 #include <string>

@@ -10,32 +10,22 @@ public:
     // Enumerações
     enum Nivel
     {
-        I,
-        II,
-        III,
-        IV,
-        V,
-        VI,
-        VII,
-        VIII
+        I, II,III, IV, V, VI,VII,VIII
     };
     enum Formacao
     {
-        GRADUACAO,
-        ESPECIALIZACAO,
-        MESTRADO,
-        DOUTORADO
+        ESPECIALIZACAO,MESTRADO,DOUTORADO
     };
 
 private:
     Nivel nivelProfessor = I;
-    Formacao formacaoProfessor = GRADUACAO;
+    Formacao formacao = ESPECIALIZACAO;
     std::string disciplina;
 
 public:
     // Construtor parametrizado
     Professor(Formacao formacao, Nivel nivel, std::string disciplina,
-              std::string matricula, float salario, std::string departamento, int cargaHoraria);
+              float salario, std::string departamento, int cargaHoraria);
 
     // Métodos getter e setter para o nível
     Nivel getNivel() const;

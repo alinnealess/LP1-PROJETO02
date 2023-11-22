@@ -1,7 +1,6 @@
 #ifndef TECNICOADM_HPP
 #define TECNICOADM_HPP
 
-
 #include <string>
 #include "funcionario.hpp"
 

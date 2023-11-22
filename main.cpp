@@ -38,7 +38,7 @@ int main()
         {
             // Cadastrar Professor
             string nome, cpf, dataNascimento, genero, disciplina;
-            int numero;
+            int numero, matricula;
             string rua, bairro, cidade, cep;
 
             cout << "Informe os dados do Professor:" << endl;
@@ -71,7 +71,8 @@ int main()
             endereco.setCidade(cidade);
             endereco.setCep(cep);
 
-            Professor novoProfessor(nome, cpf, dataNascimento, genero, endereco, disciplina);
+            Professor::Formacao formacao = Professor::ESPECIALIZACAO; // ou escolha um valor adequado
+            Professor novoProfessor(nome, cpf, dataNascimento, genero, formacao, disciplina, matricula);
             banco.cadastrarProfessor(novoProfessor);
             cout << "Professor cadastrado com sucesso!" << endl;
             break;

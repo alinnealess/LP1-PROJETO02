@@ -14,25 +14,21 @@ private:
   Endereco endereco;
 
 public:
-Pessoa::Pessoa()
-{
-  // Inicializa os atributos da classe
-}
-  // Construtor parametrizado
-   Pessoa(std::string nome, std::string cpf, std::string dataNascimento, std::string genero, std::string rua, int numero, std::string bairro, std::string cidade, std::string cep);
+  Pessoa() {}
+  Pessoa(std::string nome, std::string cpf, std::string dataNascimento, std::string genero,
+           std::string rua, int numero, std::string bairro, std::string cidade, std::string cep);
 
+    // Métodos getters
+    std::string getNome() const;
+    std::string getCpf() const;
+    std::string getDataNascimento() const;
+    std::string getGenero() const;
 
-  std::string getNome() const;
-  std::string getCpf() const;
-  std::string getDataNascimento() const;
-  std::string getGenero() const;
-  Endereco getEndereco() const;
-
-  void setNome(std::string nome);
-  void setCpf(std::string cpf);
-  void setDataNascimento(std::string dataNascimento);
-  void setGenero(std::string genero);
-  void setEndereco(std::string rua, int numero, std::string bairro, std::string cidade, std::string cep);
+    // Métodos setters
+    void setNome(std::string nome);
+    void setCpf(std::string cpf);
+    void setDataNascimento(std::string dataNascimento);
+    void setGenero(std::string genero);
 };
 
 #endif

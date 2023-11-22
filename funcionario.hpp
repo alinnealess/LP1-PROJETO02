@@ -14,10 +14,9 @@ private:
     std::string dataIngresso;
 
 public:
-    Funcionario::Funcionario()
-    {
-        // Inicializa os atributos da classe
-    }
+    // Construtor padrão
+    Funcionario() : Pessoa() {}  // Chama o construtor padrão de Pessoa
+
     // Construtor parametrizado
     Funcionario(std::string nome, std::string cpf, std::string dataNascimento, std::string genero,
                 std::string rua, int numero, std::string bairro, std::string cidade, std::string cep,
