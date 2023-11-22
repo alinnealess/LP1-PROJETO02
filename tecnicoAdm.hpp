@@ -15,7 +15,7 @@ public:
   TecnicoAdm(); 
 
   // Construtor parametrizado
-  TecnicoAdm(float adicional, const std::string &funcao);
+  TecnicoAdm(float adicional, std::string funcao);
 
   // Métodos getter e setter para o adicional de produtividade
   float getAdicionalProdutividade() const;

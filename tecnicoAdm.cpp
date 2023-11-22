@@ -6,7 +6,7 @@ using namespace std;
 TecnicoAdm::TecnicoAdm(){}
 
 // Construtor parametrizado
-TecnicoAdm::TecnicoAdm(float adicional, const string &funcao)
+TecnicoAdm::TecnicoAdm(float adicional, string funcao)
     : adicionalProdutividade(adicional), funcaoDesempenhada(funcao) {}
 
 // Métodos getter e setter para o adicional de produtividade
