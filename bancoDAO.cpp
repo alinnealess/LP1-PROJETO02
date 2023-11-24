@@ -1,24 +1,70 @@
 #include "BancoDAO.hpp"
 #include <iostream>
-#include <fstream>;
+#include <fstream>
 
 using namespace std;
 
-void BancoDAO::lerArquivoFuncionarios()
+void BancoDAO::lerArquivoTecnicoAdm()
 {
-    fstream arquivoFuncionario.open("funcionarios.txt", ios::in);
-    if (!arquivoFuncionario.is_open())
+    vector<string> linhas;
+    fstream ArquivoTecnicoAdm;
+    ArquivoTecnicoAdm.open("tecnicoAdm.txt", ios::in);
+    string temp;
+
+    while (getline(ArquivoTecnicoAdm, temp))
     {
-        cout << "Erro ao abrir o arquivo de funcionários." << endl;
-        return;
+        linhas.push_back(temp);
+    }
+    ArquivoTecnicoAdm.close();
+
+    for (int i = 0; i < linhas.size(); i += 2)
+    {
+        // professores[linhas[i]] = stof(linhas[i + 1]);
     }
 }
 
-void BancoDAO::salvarArquivoFuncionarios()
+void BancoDAO::lerArquivoProfessores()
+{
+    vector<string> linhas;
+    fstream ArquivoProfessores;
+    ArquivoProfessores.open("professores.txt", ios::in);
+    string temp;
+
+    while (getline(ArquivoProfessores, temp))
+    {
+        linhas.push_back(temp);
+    }
+    ArquivoProfessores.close();
+
+    for (int i = 0; i < linhas.size(); i += 2)
+    {
+        // professores[linhas[i]] = stof(linhas[i + 1]);
+    }
+}
+
+
+void BancoDAO::salvarArquivoTecnicoAdm()
+{
+    fstream ArquivoTecnicoAdm("tecnicoAdm.txt");
+    ArquivoTecnicoAdm.open("tecnicoAdm.txt", ios::out);
+
+    for (it = professores.begin(); it != professores.end(); it++)
+    {
+        ArquivoTecnicoAdm << it->first << endl;
+        ArquivoTecnicoAdm << it->second << endl;
+    }
+    for (it = tecnicosADM.begin(); it != tecnicosADM.end(); it++)
+    {
+        ArquivoTecnicoAdm << it->first << endl;
+        ArquivoTecnicoAdm << it->second << endl;
+    }
+}
+
+void BancoDAO::salvarArquivoProfessores()
 {
     fstream arquivoFuncionario("funcionarios.txt");
     arquivoFuncionario.open("funcionarios.txt", ios::out);
-   
+
     for (it = professores.begin(); it != professores.end(); it++)
     {
         arquivoFuncionario << it->first << endl;

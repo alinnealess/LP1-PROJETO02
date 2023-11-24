@@ -15,21 +15,19 @@ public:
 
 
   // Construtor parametrizado
-  TecnicoAdm(float adicionalProdutividade, std::string funcaoDesenpenhada,
+   TecnicoAdm(float adicionalProdutividade, std::string funcaoDesenpenhada,
              std::string matricula, float salario, std::string departamento, int cargaHoraria, std::string dataIngresso,
              std::string nome, std::string cpf, std::string dataNascimento,
              std::string genero, std::string rua, int numero,
-             std::string bairro, std::string cidade, std::string cep)
-      : Pessoa(nome, cpf, dataNascimento, genero, rua, numero, bairro, cidade, cep),
-        Funcionario(matricula, salario, departamento, cargaHoraria, dataIngresso) {}
+             std::string bairro, std::string cidade, std::string cep);
 
   // Métodos getter e setter para o adicional de produtividade
   float getAdicionalProdutividade() const;
   void setAdicionalProdutividade(float adicional);
 
   // Métodos getter e setter para a função desempenhada
-  const std::string &getFuncaoDesempenhada() const;
-  void setFuncaoDesempenhada(const std::string &funcao);
+  std::string getFuncaoDesempenhada() const;
+  void setFuncaoDesempenhada(std::string funcao);
 };
 
 #endif

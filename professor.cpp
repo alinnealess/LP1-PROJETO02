@@ -3,19 +3,16 @@
 using namespace std;
 
 // Construtor parametrizado
-Professor::Professor(string formacao, string nivel, string disciplina,
-                     string matricula, float salario, string departamento, int cargaHoraria,
-                     string dataIngresso,
-                     string nome, string cpf, string dataNascimento,
-                     string genero, string rua, int numero,
-                     string bairro, string cidade, string cep)
+Professor::Professor(std::string formacao, std::string nivel, std::string disciplina,
+                     std::string matricula, float salario, std::string departamento, int cargaHoraria, std::string dataIngresso,
+                     std::string nome, std::string cpf, std::string dataNascimento,
+                     std::string genero, std::string rua, int numero,
+                     std::string bairro, std::string cidade, std::string cep)
     : Pessoa(nome, cpf, dataNascimento, genero, rua, numero, bairro, cidade, cep),
       Funcionario(matricula, salario, departamento, cargaHoraria, dataIngresso),
       nivel(nivel),
       formacao(formacao),
       disciplina(disciplina) {}
-
-      
 
 // Métodos getter e setter para o nível
 string Professor::getNivel() const

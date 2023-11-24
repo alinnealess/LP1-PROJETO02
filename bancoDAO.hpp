@@ -13,10 +13,12 @@ private:
 public:
     
     // Métodos para ler dados do arquivo
-    void lerArquivoFuncionarios();
+    void lerArquivoProfessores();
+    void lerArquivoTecnicoAdm();
 
     // Métodos para salvar dados do arquivo
-    void salvarArquivoFuncionarios();
+    void salvarArquivoProfessores();
+    void salvarArquivoTecnicoAdm();
 
     // Métodos para cadastrar e listar professores
     void cadastrarProfessor(Professor professor);

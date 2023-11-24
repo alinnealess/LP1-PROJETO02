@@ -11,7 +11,8 @@ using namespace std;
 int main()
 {
     BancoDAO banco;
-    banco.lerArquivoFuncionarios();
+    banco.lerArquivoProfessores(); 
+    banco.lerArquivoTecnicoAdm();
 
     int opcao;
     cout << "\t-----------------------------------" << endl;
@@ -41,7 +42,7 @@ int main()
         {
             // Cadastrar Professor
             string nome, cpf, dataNascimento, genero, departamento, dataIngresso, matricula;
-            string nome, cpf, dataNascimento, genero;
+            
             int numero, cargaHoraria;
             string rua, bairro, cidade, cep;
             string formacao, nivel, disciplina;
@@ -199,7 +200,8 @@ int main()
         default:
             cout << "Opção invalida.\n";
         }
-        banco.salvarArquivoFuncionarios();
+        banco.salvarArquivoProfessores();
+        banco.salvarArquivoTecnicoAdm();
     } while (opcao != 0);
 
     return 0;

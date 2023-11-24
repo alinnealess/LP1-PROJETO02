@@ -4,11 +4,11 @@ using namespace std;
 #include <string>
 
 // Construtor parametrizado
-TecnicoAdm::TecnicoAdm(float adicionalProdutividade, string funcaoDesenpenhada,
-             string matricula, float salario, string departamento, int cargaHoraria, string dataIngresso,
-             string nome, string cpf, string dataNascimento,
-             string genero, string rua, int numero,
-             string bairro, string cidade, string cep)
+TecnicoAdm::TecnicoAdm(float adicionalProdutividade, std::string funcaoDesenpenhada,
+             std::string matricula, float salario, std::string departamento, int cargaHoraria, std::string dataIngresso,
+             std::string nome, std::string cpf, std::string dataNascimento,
+             std::string genero, std::string rua, int numero,
+             std::string bairro, std::string cidade, std::string cep)
       : Pessoa(nome, cpf, dataNascimento, genero, rua, numero, bairro, cidade, cep),
         Funcionario(matricula, salario, departamento, cargaHoraria, dataIngresso) {}
 
@@ -24,12 +24,12 @@ void TecnicoAdm::setAdicionalProdutividade(float adicionalProdutividade)
 }
 
 // Métodos getter e setter para a função desempenhada
-const string &TecnicoAdm::getFuncaoDesempenhada() const
+string TecnicoAdm::getFuncaoDesempenhada() const
 {
     return this->funcaoDesempenhada;
 }
 
-void TecnicoAdm::setFuncaoDesempenhada(const string &funcaoDesempenhada)
+void TecnicoAdm::setFuncaoDesempenhada(string funcaoDesempenhada)
 {
     this->funcaoDesempenhada = funcaoDesempenhada;
 }
