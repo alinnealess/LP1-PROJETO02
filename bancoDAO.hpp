@@ -11,6 +11,13 @@ private:
     std::vector<TecnicoAdm> tecnicosADM;
 
 public:
+    
+    // Métodos para ler dados do arquivo
+    void lerArquivoFuncionarios();
+
+    // Métodos para salvar dados do arquivo
+    void salvarArquivoFuncionarios();
+
     // Métodos para cadastrar e listar professores
     void cadastrarProfessor(Professor professor);
     void listarProfessores() const;

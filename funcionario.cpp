@@ -4,15 +4,7 @@ using namespace std;
 
 
 // Construtor parametrizado
-Funcionario::Funcionario(std::string nome, std::string cpf, std::string dataNascimento, std::string genero,
-                         std::string rua, int numero, std::string bairro, std::string cidade, std::string cep,
-                         std::string matricula, float salario, std::string departamento, int cargaHoraria, std::string dataIngresso)
-    : Pessoa(nome, cpf, dataNascimento, genero, rua, numero, bairro, cidade, cep),
-      matricula(matricula),
-      salario(salario),
-      departamento(departamento),
-      cargaHoraria(cargaHoraria),
-      dataIngresso(dataIngresso) {}
+Funcionario::Funcionario(string matricula, float salario, string departamento, int cargaHoraria, string dataIngresso){}
 
 // Métodos getter e setter para a matrícula
 string Funcionario::getMatricula() const

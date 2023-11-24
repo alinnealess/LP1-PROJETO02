@@ -11,6 +11,7 @@ using namespace std;
 int main()
 {
     BancoDAO banco;
+    banco.lerArquivoFuncionarios();
 
     int opcao;
     cout << "\t-----------------------------------" << endl;
@@ -39,9 +40,11 @@ int main()
         case 1:
         {
             // Cadastrar Professor
-            string nome, cpf, dataNascimento, genero, disciplina, departamento;
-            int numero, matricula, cargaHoraria;
+            string nome, cpf, dataNascimento, genero, departamento, dataIngresso, matricula;
+            string nome, cpf, dataNascimento, genero;
+            int numero, cargaHoraria;
             string rua, bairro, cidade, cep;
+            string formacao, nivel, disciplina;
             float salario;
 
             cout << "\t\n--Informe os dados do Professor--" << endl;
@@ -65,68 +68,76 @@ int main()
             cin >> cidade;
             cout << "CEP: ";
             cin >> cep;
+
+            cout << "Matricula: ";
+            cin >> matricula;
+            cout << "Salário: ";
+            cin >> salario;
+            cout << "Departamento: ";
+            cin >> departamento;
+            cout << "Carga Horaria: ";
+            cin >> cargaHoraria;
+
+            cout << "Formacao: ";
+            cin >> formacao;
+            cout << "Nivel: ";
+            cin >> nivel;
             cout << "Disciplina: ";
             cin >> disciplina;
-            cout << "Matrícula: ";
-            cin >> matricula;
 
-            Endereco endereco;
-            endereco.setRua(rua);
-            endereco.setNumero(numero);
-            endereco.setBairro(bairro);
-            endereco.setCidade(cidade);
-            endereco.setCep(cep);
+            Endereco endereco(rua, numero, bairro, cidade, cep);
+            Professor novoProfessor(formacao, nivel, disciplina,
+                matricula, salario, departamento, cargaHoraria, dataIngresso,
+                nome, cpf, dataNascimento, genero, rua, numero, bairro, cidade, cep);
 
-            Professor::Formacao formacao = Professor::ESPECIALIZACAO;
-            Professor::Nivel nivel = Professor::I;
-            Professor novoProfessor(formacao, nivel, disciplina, matricula, departamento, cargaHoraria);
             banco.cadastrarProfessor(novoProfessor);
             cout << "\n\tProfessor cadastrado com sucesso!\n"
                  << endl;
+
             break;
         }
         case 2:
         {
             // Cadastrar TecnicoADM
-            string nome, cpf, dataNascimento, genero, funcao;
-            int numero;
-            string rua, bairro, cidade, cep;
-            float adicional;
+            // string nome, cpf, dataNascimento, genero, funcao;
+            // int numero;
+            // string rua, bairro, cidade, cep;
+            // float adicional;
 
-            cout << "\t\n--Informe os dados do TecnicoADM--" << endl;
-            cout << "Nome: ";
-            cin >> nome;
-            cout << "CPF: ";
-            cin >> cpf;
-            cout << "Data de Nascimento: ";
-            cin >> dataNascimento;
-            cout << "Genero: ";
-            cin >> genero;
-            cout << "--Endereco--" << endl;
-            cout << "Rua: ";
-            cin >> rua;
-            cout << "Numero: ";
-            cin >> numero;
-            cout << "Bairro: ";
-            cin >> bairro;
-            cout << "Cidade: ";
-            cin >> cidade;
-            cout << "CEP: ";
-            cin >> cep;
-            cout << "Funcao: ";
-            cin >> funcao;
+            // cout << "\t\n--Informe os dados do TecnicoADM--" << endl;
+            // cout << "Nome: ";
+            // cin >> nome;
+            // cout << "CPF: ";
+            // cin >> cpf;
+            // cout << "Data de Nascimento: ";
+            // cin >> dataNascimento;
+            // cout << "Genero: ";
+            // cin >> genero;
+            // cout << "--Endereco--" << endl;
+            // cout << "Rua: ";
+            // cin >> rua;
+            // cout << "Numero: ";
+            // cin >> numero;
+            // cout << "Bairro: ";
+            // cin >> bairro;
+            // cout << "Cidade: ";
+            // cin >> cidade;
+            // cout << "CEP: ";
+            // cin >> cep;
+            // cout << "Funcao: ";
+            // cin >> funcao;
 
-            Endereco endereco;
-            endereco.setRua(rua);
-            endereco.setNumero(numero);
-            endereco.setBairro(bairro);
-            endereco.setCidade(cidade);
-            endereco.setCep(cep);
+            // Endereco endereco;
+            // endereco.setRua(rua);
+            // endereco.setNumero(numero);
+            // endereco.setBairro(bairro);
+            // endereco.setCidade(cidade);
+            // endereco.setCep(cep);
 
-            TecnicoAdm novoTecnico(adicional, funcao);
-            banco.cadastrarTecnicoADM(novoTecnico);
-            cout << "\t\nTecnicoADM cadastrado com sucesso!\n"
-                 << endl;
+            // TecnicoAdm novoTecnico(adicional, funcao);
+            // banco.cadastrarTecnicoADM(novoTecnico);
+            // cout << "\t\nTecnicoADM cadastrado com sucesso!\n"
+            //      << endl;
             break;
         }
         case 3:
@@ -143,7 +154,7 @@ int main()
         {
             // Deletar Professor
             int matricula;
-            cout << "Informe a matrícula do Professor a ser deletado: ";
+            cout << "Informe a matricula do Professor a ser deletado: ";
             cin >> matricula;
             banco.deletarProfessor(matricula);
             cout << "Professor deletado com sucesso!" << endl;
@@ -154,7 +165,7 @@ int main()
         {
             // Deletar TecnicoADM
             int matricula;
-            cout << "Informe a matrícula do TecnicoADM a ser deletado: ";
+            cout << "Informe a matricula do TecnicoADM a ser deletado: ";
             cin >> matricula;
             banco.deletarTecnicoADM(matricula);
             cout << "TecnicoADM deletado com sucesso!" << endl;
@@ -165,7 +176,7 @@ int main()
         {
             // Buscar Professor
             int matricula;
-            cout << "Informe a matrícula do Professor a ser buscado: ";
+            cout << "Informe a matricula do Professor a ser buscado: ";
             cin >> matricula;
             banco.buscarProfessor(matricula);
             break;
@@ -175,7 +186,7 @@ int main()
         {
             // Buscar TecnicoADM
             int matricula;
-            cout << "Informe a matrícula do TecnicoADM a ser buscado: ";
+            cout << "Informe a matricula do TecnicoADM a ser buscado: ";
             cin >> matricula;
             banco.buscarTecnicoADM(matricula);
             break;
@@ -186,9 +197,9 @@ int main()
             break;
 
         default:
-            cout << "Opção inválida.\n";
+            cout << "Opção invalida.\n";
         }
-
+        banco.salvarArquivoFuncionarios();
     } while (opcao != 0);
 
     return 0;

@@ -4,7 +4,7 @@
 #include <string>
 #include "funcionario.hpp"
 
-class TecnicoAdm : public Funcionario
+class TecnicoAdm : public Funcionario, public Pessoa
 {
 private:
   float adicionalProdutividade = 0.25;
@@ -12,10 +12,16 @@ private:
 
 public:
   // Construtor padrão
-  TecnicoAdm(); 
+
 
   // Construtor parametrizado
-  TecnicoAdm(float adicional, std::string funcao);
+  TecnicoAdm(float adicionalProdutividade, std::string funcaoDesenpenhada,
+             std::string matricula, float salario, std::string departamento, int cargaHoraria, std::string dataIngresso,
+             std::string nome, std::string cpf, std::string dataNascimento,
+             std::string genero, std::string rua, int numero,
+             std::string bairro, std::string cidade, std::string cep)
+      : Pessoa(nome, cpf, dataNascimento, genero, rua, numero, bairro, cidade, cep),
+        Funcionario(matricula, salario, departamento, cargaHoraria, dataIngresso) {}
 
   // Métodos getter e setter para o adicional de produtividade
   float getAdicionalProdutividade() const;

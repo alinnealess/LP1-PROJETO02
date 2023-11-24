@@ -1,7 +1,35 @@
 #include "BancoDAO.hpp"
 #include <iostream>
+#include <fstream>;
 
 using namespace std;
+
+void BancoDAO::lerArquivoFuncionarios()
+{
+    fstream arquivoFuncionario.open("funcionarios.txt", ios::in);
+    if (!arquivoFuncionario.is_open())
+    {
+        cout << "Erro ao abrir o arquivo de funcionários." << endl;
+        return;
+    }
+}
+
+void BancoDAO::salvarArquivoFuncionarios()
+{
+    fstream arquivoFuncionario("funcionarios.txt");
+    arquivoFuncionario.open("funcionarios.txt", ios::out);
+   
+    for (it = professores.begin(); it != professores.end(); it++)
+    {
+        arquivoFuncionario << it->first << endl;
+        arquivoFuncionario << it->second << endl;
+    }
+    for (it = tecnicosADM.begin(); it != tecnicosADM.end(); it++)
+    {
+        arquivoFuncionario << it->first << endl;
+        arquivoFuncionario << it->second << endl;
+    }
+}
 
 void BancoDAO::cadastrarProfessor(Professor professor)
 {
@@ -13,6 +41,7 @@ void BancoDAO::listarProfessores() const
     cout << "Lista de Professores:" << endl;
     for (const auto &professor : professores)
     {
+        cout << " Nome: " << professor.getNome() << ", Disciplina: " << professor.getDisciplina() << endl;
     }
 }
 

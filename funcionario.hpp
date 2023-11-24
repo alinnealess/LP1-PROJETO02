@@ -4,7 +4,7 @@
 #include <string>
 #include "pessoa.hpp"
 
-class Funcionario : public Pessoa
+class Funcionario
 {
 private:
     std::string matricula;
@@ -15,12 +15,11 @@ private:
 
 public:
     // Construtor padrão
-    Funcionario() : Pessoa() {}  // Chama o construtor padrão de Pessoa
+    Funcionario() {}
 
     // Construtor parametrizado
-    Funcionario(std::string nome, std::string cpf, std::string dataNascimento, std::string genero,
-                std::string rua, int numero, std::string bairro, std::string cidade, std::string cep,
-                std::string matricula, float salario, std::string departamento, int cargaHoraria, std::string dataIngresso);
+    Funcionario(
+        std::string matricula, float salario, std::string departamento, int cargaHoraria, std::string dataIngresso);
 
     // Métodos getter e setter para a matrícula
     std::string getMatricula() const;
