@@ -10,18 +10,21 @@ using namespace std;
 
 int main()
 {
+    // Cria uma instância da classe BancoDAO para gerenciar o banco de dados
     BancoDAO banco;
+
+    // Lê os dados dos professores e técnicos administrativos do arquivo
     banco.lerArquivoProfessores(); 
     banco.lerArquivoTecnicoAdm();
 
     int opcao;
     cout << "\t-----------------------------------" << endl;
     cout << "\t-----------------------------------" << endl;
-    cout << "\t------Bem-vindo ao SIS-IMDCorp------" << endl;
+    cout << "\t------Bem-vindo ao SIS-IMDCorp-----" << endl;
     cout << "\t-----------------------------------" << endl;
-    cout << "\t-----------------------------------\n"
-         << endl;
+    cout << "\t-----------------------------------\n"<< endl;
 
+    // Loop principal do programa
     do
     {
         cout << "1. Cadastrar Professor" << endl;
@@ -36,11 +39,13 @@ int main()
         cout << "\nEscolha uma opcao: ";
         cin >> opcao;
 
+        // Switch para processar a escolha do usuário
         switch (opcao)
         {
         case 1:
         {
             // Cadastrar Professor
+            // Solicita informações do usuário
             string nome, cpf, dataNascimento, genero, departamento, dataIngresso, matricula;
             
             int numero, cargaHoraria;
@@ -50,23 +55,30 @@ int main()
 
             cout << "\t\n--Informe os dados do Professor--" << endl;
             cout << "Nome: ";
-            cin >> nome;
+            cin.ignore();
+            getline(cin, nome);
+            // cin >> nome;
             cout << "CPF: ";
             cin >> cpf;
             cout << "Data de Nascimento: ";
             cin >> dataNascimento;
+            cout << "Genero [Feminino = F, Masculino = M] "<< endl;
             cout << "Genero: ";
             cin >> genero;
 
             cout << "\n--Endereco--" << endl;
             cout << "Rua: ";
-            cin >> rua;
+            cin.ignore();  // Limpa o buffer do teclado antes de usar getline
+            getline(cin, rua);
+            // cin >> rua;
             cout << "Numero: ";
             cin >> numero;
             cout << "Bairro: ";
-            cin >> bairro;
+            cin.ignore();
+            getline(cin, bairro);
             cout << "Cidade: ";
-            cin >> cidade;
+            cin.ignore();
+            getline(cin, cidade);
             cout << "CEP: ";
             cin >> cep;
 
@@ -79,21 +91,23 @@ int main()
             cout << "Carga Horaria: ";
             cin >> cargaHoraria;
 
+            cout << "Formacao [GRADUACAO = 1, ESPECIALIZACAO = 2, MESTRADO = 3, DOUTORADO = 4]" << endl;
             cout << "Formacao: ";
             cin >> formacao;
+            cout << "Nivel [I = 1, II = 2, III = 3, IV = 4, V = 5, VI = 6, VII = 7, VIII = 8]" << endl ;
             cout << "Nivel: ";
             cin >> nivel;
             cout << "Disciplina: ";
             cin >> disciplina;
 
-            //Endereco endereco(rua, numero, bairro, cidade, cep);
+             // Cria um novo objeto Professor com os dados fornecidos  
             Professor novoProfessor(formacao, nivel, disciplina,
                 matricula, salario, departamento, cargaHoraria, dataIngresso,
                 nome, cpf, dataNascimento, genero, rua, numero, bairro, cidade, cep);
 
+            // Adiciona o novo professor ao banco de dados
             banco.cadastrarProfessor(novoProfessor);
-            cout << "\n\tProfessor cadastrado com sucesso!\n"
-                 << endl;
+            cout << "\n\t===Professor cadastrado com sucesso!===\n" << endl;
 
             break;
         }
@@ -154,7 +168,7 @@ int main()
         case 5:
         {
             // Deletar Professor
-            int matricula;
+            string matricula;
             cout << "Informe a matricula do Professor a ser deletado: ";
             cin >> matricula;
             banco.deletarProfessor(matricula);
@@ -165,7 +179,7 @@ int main()
         case 6:
         {
             // Deletar TecnicoADM
-            int matricula;
+            string matricula;
             cout << "Informe a matricula do TecnicoADM a ser deletado: ";
             cin >> matricula;
             banco.deletarTecnicoADM(matricula);
@@ -176,7 +190,7 @@ int main()
         case 7:
         {
             // Buscar Professor
-            int matricula;
+            string matricula;
             cout << "Informe a matricula do Professor a ser buscado: ";
             cin >> matricula;
             banco.buscarProfessor(matricula);
@@ -186,7 +200,7 @@ int main()
         case 8:
         {
             // Buscar TecnicoADM
-            int matricula;
+            string matricula;
             cout << "Informe a matricula do TecnicoADM a ser buscado: ";
             cin >> matricula;
             banco.buscarTecnicoADM(matricula);
@@ -200,6 +214,8 @@ int main()
         default:
             cout << "Opção invalida.\n";
         }
+
+        // Salva alterações no arquivo após cada operação
         banco.salvarArquivoProfessores();
         banco.salvarArquivoTecnicoAdm();
     } while (opcao != 0);

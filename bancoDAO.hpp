@@ -30,12 +30,12 @@ public:
     void listarTecnicosADM() const;
 
     // Métodos para deletar professores e tecnicosADM
-    void deletarProfessor(int matricula);
-    void deletarTecnicoADM(int matricula);
+    void deletarProfessor(std::string matricula);
+    void deletarTecnicoADM(std::string matricula);
 
     // Métodos para buscar professores e tecnicosADM
-    void buscarProfessor(int matricula) const;
-    void buscarTecnicoADM(int matricula) const;
+    void buscarProfessor(std::string matricula) const;
+    void buscarTecnicoADM(std::string matricula) const;
 };
 
 #endif

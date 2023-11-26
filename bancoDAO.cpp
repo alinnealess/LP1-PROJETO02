@@ -1,167 +1,160 @@
-#include "BancoDAO.hpp"
+#include "bancoDAO.hpp"
 #include <iostream>
 #include <fstream>
 #include <vector>
+#include <string>
 
 using namespace std;
 
-void BancoDAO::lerArquivoTecnicoAdm()
-{
-    vector<string> linhas;
-    fstream ArquivoTecnicoAdm;
+// ===Funções relacionadas a Professores===
 
-    ArquivoTecnicoAdm.open("tecnicoAdm.txt", ios::in);
-    string temp;
-
-    while (getline(ArquivoTecnicoAdm, temp))
-    {
-        linhas.push_back(temp);
-    }
-    ArquivoTecnicoAdm.close();
-
-    for (int i = 0; i < linhas.size(); i += 2)
-    {
-        // professores[linhas[i]] = stof(linhas[i + 1]);
-    }
-}
-
-// void BancoDAO::lerArquivoProfessores()
-// {
-//     vector<string> linhas;
-//     fstream ArquivoProfessores;
-//     ArquivoProfessores.open("professores.txt", ios::in);
-//     string temp;
-
-//     while (getline(ArquivoProfessores, temp))
-//     {
-//         linhas.push_back(temp);
-//     }
-//     ArquivoProfessores.close();
-
-//     for (int i = 0; i < linhas.size(); i += 2)
-//     {
-//          professoresvector[linhas[i]] = stof(linhas[i + 1]);
-//     }
-// }
-
+// Função para ler os dados dos professores do arquivo
 void BancoDAO::lerArquivoProfessores()
 {
-    ifstream arquivoProfessores("professores.txt");
-
-    if (!arquivoProfessores.is_open())
+    ifstream arquivo("professores.txt");
+    if (arquivo.is_open())
     {
-        cerr << "Erro ao abrir o arquivo de professores." << endl;
-        return;
+        string formacao;
+        string nivel;
+        string disciplina;
+        string matricula;
+        float salario;
+        string departamento;
+        int cargaHoraria;
+        string dataIngresso;
+        string nome;
+        string cpf;
+        string dataNascimento;
+        string genero;
+        string rua;
+        int numero;
+        string bairro;
+        string cidade;
+        string cep;
+
+        while (arquivo >> formacao >> nivel >> disciplina >> matricula >> salario >>
+               departamento >> cargaHoraria >> dataIngresso >> nome >> cpf >>
+               dataNascimento >> genero >> rua >> numero >> bairro >> cidade >>
+               cep)
+        {
+            Professor professor(formacao, nivel, disciplina, matricula, salario,
+                                departamento, cargaHoraria, dataIngresso, nome, cpf,
+                                dataNascimento, genero, rua, numero, bairro, cidade,
+                                cep);
+            professoresvector.push_back(professor);
+        }
     }
-
-    string nome, cpf, dataNascimento, genero, departamento, dataIngresso, matricula;
-    int numero, cargaHoraria;
-    string rua, bairro, cidade, cep;
-    string formacao, nivel, disciplina;
-    float salario;
-
-    // Loop para ler cada bloco de informações do professor
-    while (arquivoProfessores >> nome >> cpf >> dataNascimento >> genero >> rua >> numero >> bairro >> cidade >> cep >>
-           matricula >> salario >> departamento >> cargaHoraria >> dataIngresso >> formacao >> nivel >> disciplina)
-    {
-        // Cria um novo objeto Professor com os dados lidos do arquivo
-        Professor novoProfessor(formacao, nivel, disciplina,
-                                matricula, salario, departamento, cargaHoraria, dataIngresso,
-                                nome, cpf, dataNascimento, genero, rua, numero, bairro, cidade, cep);
-
-        // Adiciona o professor ao vetor
-        professoresvector.push_back(novoProfessor);
-    }
-
-    // Fecha o arquivo
-    arquivoProfessores.close();
+    arquivo.close();
 }
 
-void BancoDAO::salvarArquivoTecnicoAdm()
-{
-    // fstream ArquivoTecnicoAdm("tecnicoAdm.txt");
-    // ArquivoTecnicoAdm.open("tecnicoAdm.txt", ios::out);
-
-    // for (it = professores.begin(); it != professores.end(); it++)
-    // {
-    //     ArquivoTecnicoAdm << it->first << endl;
-    //     ArquivoTecnicoAdm << it->second << endl;
-    // }
-    // for (it = tecnicosADM.begin(); it != tecnicosADM.end(); it++)
-    // {
-    //     ArquivoTecnicoAdm << it->first << endl;
-    //     ArquivoTecnicoAdm << it->second << endl;
-    // }
-}
-
-void BancoDAO::salvarArquivoProfessores()
-{
-    fstream arquivoProfessores("professores.txt");
-    arquivoProfessores.open("professores.txt", ios::out);
-
-    for (const auto &professor : professoresvector)
-    {
-        // Escreve os dados do professor no arquivo
-        arquivoProfessores << professor.getNome() << endl;
-        // arquivoProfessores << professor.getCPF() << endl;
-        //  ... Continue para os outros atributos do Professor
-    }
-
-    // Fecha o arquivo
-    arquivoProfessores.close();
-    //     for (it = professores.begin(); it != professores.end(); it++)
-    //     {
-    //         arquivoFuncionario << it->first << endl;
-    //         arquivoFuncionario << it->second << endl;
-    //     }
-    //     for (it = tecnicosADM.begin(); it != tecnicosADM.end(); it++)
-    //     {
-    //         arquivoFuncionario << it->first << endl;
-    //         arquivoFuncionario << it->second << endl;
-    //     }
-}
-
+// Função para cadastrar um novo professor
 void BancoDAO::cadastrarProfessor(Professor novoProfessor)
 {
     professoresvector.push_back(novoProfessor);
     salvarArquivoProfessores();
 }
 
+// Função para listar todos os professores
 void BancoDAO::listarProfessores() const
 {
-    //     cout << "\n=====================================" << endl;
-    //     cout << "Lista de Professores:" << endl;
-    //     for (Professor Professor : this->professores) {
-
-    //   }
-    //     cout << "\n=====================================" << endl;
+    for (const Professor &professor : professoresvector)
+    {
+        
+        cout << professor.getFormacao() << " " << professor.getNivel() << " "
+             << professor.getDisciplina() << " " << professor.getMatricula()
+             << " " << professor.getSalario() << " "
+             << professor.getDepartamento() << " " << professor.getCargaHoraria()
+             << " " << professor.getDataIngresso() << " " << professor.getNome()
+             << " " << professor.getCpf() << " " << professor.getDataNascimento()
+             << " " << professor.getGenero() << " " << professor.getRua() << " "
+             << professor.getNumero() << " " << professor.getBairro() << " "
+             << professor.getCidade() << " " << professor.getCep() << endl;
+    }
 }
 
+// Função para buscar um professor pelo número de matrícula
+void BancoDAO::buscarProfessor(string matricula) const
+{
+    for (const Professor &professor : professoresvector)
+    {
+        if (professor.getMatricula() == matricula)
+        {
+            // Found the professor, you can perform actions here
+            cout << professor.getFormacao() << " " << professor.getNivel() << " "
+                 << professor.getDisciplina() << " " << professor.getMatricula()
+                 << " " << professor.getSalario() << " "
+                 << professor.getDepartamento() << " " << professor.getCargaHoraria()
+                 << " " << professor.getDataIngresso() << " " << professor.getNome()
+                 << " " << professor.getCpf() << " " << professor.getDataNascimento()
+                 << " " << professor.getGenero() << " " << professor.getRua() << " "
+                 << professor.getNumero() << " " << professor.getBairro() << " "
+                 << professor.getCidade() << " " << professor.getCep() << endl;
+            return;
+        }
+    }
+}
+// Função para deletar um professor pelo número de matrícula
+void BancoDAO::deletarProfessor(string matricula)
+{
+    for (auto it = professoresvector.begin(); it != professoresvector.end();
+         ++it)
+    {
+        if (it->getMatricula() == matricula)
+        {
+            professoresvector.erase(it);
+            break;
+        }
+    }
+}
+
+// Função para salvar os dados dos professores no arquivo
+void BancoDAO::salvarArquivoProfessores()
+{
+     ofstream arquivo("professores.txt");
+  if (arquivo.is_open()) {
+    for (const Professor &professor : professoresvector) {
+      arquivo << professor.getFormacao() << " " << professor.getNivel() << " "
+             << professor.getDisciplina() << " " << professor.getMatricula()
+             << " " << professor.getSalario() << " "
+             << professor.getDepartamento() << " " << professor.getCargaHoraria()
+             << " " << professor.getDataIngresso() << " " << professor.getNome()
+             << " " << professor.getCpf() << " " << professor.getDataNascimento()
+             << " " << professor.getGenero() << " " << professor.getRua() << " "
+             << professor.getNumero() << " " << professor.getBairro() << " "
+             << professor.getCidade() << " " << professor.getCep() << endl;
+    }
+    arquivo.close();
+  }
+}
+
+// ===Funções relacionadas a Técnicos Administrativos (TecnicoADM)===
+
+// Função para ler os dados dos Técnicos ADM do arquivo
+void BancoDAO::lerArquivoTecnicoAdm()
+{
+}
+
+// Função para salvar os dados dos Técnicos ADM no arquivo
+void BancoDAO::salvarArquivoTecnicoAdm()
+{
+}
+
+// Função para cadastrar um novo Técnico ADM
 void BancoDAO::cadastrarTecnicoADM(const TecnicoAdm tecnicoADM)
 {
-    // tecnicosADM.push_back(tecnicoADM);
 }
 
+// Função para listar todos os Técnicos ADM
 void BancoDAO::listarTecnicosADM() const
 {
-    // cout << "Lista de TecnicosADM:" << endl;
-    // for (const auto &tecnicoADM : tecnicosADM)
-    // {
-    // }
 }
 
-void BancoDAO::deletarProfessor(int matricula)
+// Função para deletar um Técnico ADM pelo número de matrícula
+void BancoDAO::deletarTecnicoADM(string matricula)
 {
 }
 
-void BancoDAO::deletarTecnicoADM(int matricula)
-{
-}
-
-void BancoDAO::buscarProfessor(int matricula) const
-{
-}
-
-void BancoDAO::buscarTecnicoADM(int matricula) const
+// Função para buscar um Técnico ADM pelo número de matrícula
+void BancoDAO::buscarTecnicoADM(string matricula) const
 {
 }
