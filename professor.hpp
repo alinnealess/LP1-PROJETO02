@@ -14,7 +14,7 @@ private:
     std::string disciplina;
 
 public:
-    // Professor(){}
+    Professor(){}
     //  Construtor parametrizado
     Professor(std::string formacao, std::string nivel, std::string disciplina,
               std::string matricula, float salario, std::string departamento, int cargaHoraria, std::string dataIngresso,

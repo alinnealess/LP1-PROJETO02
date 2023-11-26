@@ -10,7 +10,8 @@ TecnicoAdm::TecnicoAdm(float adicionalProdutividade, std::string funcaoDesenpenh
              std::string genero, std::string rua, int numero,
              std::string bairro, std::string cidade, std::string cep)
       : Pessoa(nome, cpf, dataNascimento, genero, rua, numero, bairro, cidade, cep),
-        Funcionario(matricula, salario, departamento, cargaHoraria, dataIngresso) {}
+        Funcionario(matricula, salario, departamento, cargaHoraria, dataIngresso),
+        adicionalProdutividade(adicionalProdutividade), funcaoDesempenhada(funcaoDesempenhada) {}
 
 // Métodos getter e setter para o adicional de produtividade
 float TecnicoAdm::getAdicionalProdutividade() const

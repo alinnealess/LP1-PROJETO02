@@ -4,7 +4,7 @@ using namespace std;
 // Construtor parametrizado
 Pessoa::Pessoa(string nome, string cpf, string dataNascimento, string genero,
                string rua, int numero, string bairro, string cidade, string cep)
-    : endereco(rua, numero, bairro, cidade, cep), nome(nome), cpf(cpf), dataNascimento(dataNascimento), genero(genero){}
+    : Endereco(rua, numero, bairro, cidade, cep), nome(nome), cpf(cpf), dataNascimento(dataNascimento), genero(genero) {}
 
 // Métodos getters
 string Pessoa::getNome() const

@@ -1,4 +1,5 @@
 # Sistema de Gestão de Pessoas - SIS-IMDCorp
+Sistema desenvolvido para segunda unidade da disciplina de Linguagem de Programação II do curso de Bacharelado em Tecnologia da Informação da UFRN.
 
 ## Descrição
 Este é um sistema de gestão de pessoas desenvolvido em C++ para cadastrar, listar e gerenciar professores e técnicos administrativos.
@@ -22,9 +23,3 @@ O programa exibirá um menu interativo onde você pode cadastrar, listar e geren
 
 ## Requisitos
 - Compilador C++ compatível com C++11 ou superior.
-
-## Contribuindo
-Sinta-se à vontade para contribuir para o projeto. Fork, faça suas alterações e envie um pull request.
-
-## Licença
-Este projeto está licenciado sob a [Licença MIT](LICENSE).

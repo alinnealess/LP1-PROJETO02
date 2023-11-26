@@ -33,7 +33,7 @@ int main()
         cout << "7. Buscar Professor" << endl;
         cout << "8. Buscar TecnicoADM" << endl;
         cout << "0. Sair" << endl;
-        cout << "Escolha uma opcao: ";
+        cout << "\nEscolha uma opcao: ";
         cin >> opcao;
 
         switch (opcao)
@@ -58,7 +58,7 @@ int main()
             cout << "Genero: ";
             cin >> genero;
 
-            cout << "--Endereco--" << endl;
+            cout << "\n--Endereco--" << endl;
             cout << "Rua: ";
             cin >> rua;
             cout << "Numero: ";
@@ -72,7 +72,7 @@ int main()
 
             cout << "Matricula: ";
             cin >> matricula;
-            cout << "Salário: ";
+            cout << "Salario: ";
             cin >> salario;
             cout << "Departamento: ";
             cin >> departamento;
@@ -86,7 +86,7 @@ int main()
             cout << "Disciplina: ";
             cin >> disciplina;
 
-            Endereco endereco(rua, numero, bairro, cidade, cep);
+            //Endereco endereco(rua, numero, bairro, cidade, cep);
             Professor novoProfessor(formacao, nivel, disciplina,
                 matricula, salario, departamento, cargaHoraria, dataIngresso,
                 nome, cpf, dataNascimento, genero, rua, numero, bairro, cidade, cep);

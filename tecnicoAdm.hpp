@@ -12,10 +12,10 @@ private:
 
 public:
   // Construtor padrão
-
+  TecnicoAdm(){}
 
   // Construtor parametrizado
-   TecnicoAdm(float adicionalProdutividade, std::string funcaoDesenpenhada,
+   TecnicoAdm(float adicionalProdutividade, std::string funcaoDesempenhada,
              std::string matricula, float salario, std::string departamento, int cargaHoraria, std::string dataIngresso,
              std::string nome, std::string cpf, std::string dataNascimento,
              std::string genero, std::string rua, int numero,
@@ -23,11 +23,11 @@ public:
 
   // Métodos getter e setter para o adicional de produtividade
   float getAdicionalProdutividade() const;
-  void setAdicionalProdutividade(float adicional);
+  void setAdicionalProdutividade(float adicionalProdutividade);
 
   // Métodos getter e setter para a função desempenhada
   std::string getFuncaoDesempenhada() const;
-  void setFuncaoDesempenhada(std::string funcao);
+  void setFuncaoDesempenhada(std::string funcaoDesempenhada);
 };
 
 #endif

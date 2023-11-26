@@ -18,8 +18,7 @@ public:
     Funcionario() {}
 
     // Construtor parametrizado
-    Funcionario(
-        std::string matricula, float salario, std::string departamento, int cargaHoraria, std::string dataIngresso);
+    Funcionario(std::string matricula, float salario, std::string departamento, int cargaHoraria, std::string dataIngresso);
 
     // Métodos getter e setter para a matrícula
     std::string getMatricula() const;

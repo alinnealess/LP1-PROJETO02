@@ -1,14 +1,15 @@
 #ifndef BANCODAO_HPP
 #define BANCODAO_HPP
 
-#include <vector>
+
 #include "professor.hpp"
 #include "tecnicoAdm.hpp"
+#include <vector>
 
 class BancoDAO {
 private:
-    std::vector<Professor> professores;
-    std::vector<TecnicoAdm> tecnicosADM;
+    std::vector<Professor> professoresvector;
+    std::vector<TecnicoAdm> tecnicosADMvector;
 
 public:
     
