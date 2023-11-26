@@ -5,6 +5,7 @@
 #include <string>
 
 using namespace std;
+BancoDAO::BancoDAO(){}
 
 // ===Funções relacionadas a Professores===
 
@@ -12,6 +13,11 @@ using namespace std;
 void BancoDAO::lerArquivoProfessores()
 {
     ifstream arquivo("professores.txt");
+     if (!arquivo.is_open())
+    {
+        cout << "Erro ao abrir o arquivo de professores." << endl;
+        return;
+    }
     if (arquivo.is_open())
     {
         string formacao;
@@ -51,7 +57,7 @@ void BancoDAO::lerArquivoProfessores()
 void BancoDAO::cadastrarProfessor(Professor novoProfessor)
 {
     professoresvector.push_back(novoProfessor);
-    // salvarArquivoProfessores();
+    cout << "\n\t===Professor cadastrado com sucesso!===" << endl;
 }
 
 // Função para listar todos os professores
@@ -59,6 +65,11 @@ void BancoDAO::listarProfessores() const
 {
     for (const Professor &professor : professoresvector)
     {
+        
+    //     cout << "Matricula: " << professor.getMatricula() << endl;
+    // cout << "Salario: " << professor.getSalario() << endl;
+    // cout << "Departamento: " << professor.getDepartamento() << endl;
+    // cout << "Carga Horaria: " << professor.getCargaHoraria() << endl;
 
         cout << professor.getFormacao() << " " << professor.getNivel() << " "
              << professor.getDisciplina() << " " << professor.getMatricula()
@@ -113,6 +124,12 @@ void BancoDAO::deletarProfessor(string matricula)
 void BancoDAO::salvarArquivoProfessores()
 {
     ofstream arquivo("professores.txt");
+     if (!arquivo.is_open())
+    {
+        cout << "Erro ao abrir o arquivo de professores para escrita." << endl;
+        return;
+    }
+
     if (arquivo.is_open())
     {
         for (const Professor &professor : professoresvector)
@@ -136,8 +153,13 @@ void BancoDAO::salvarArquivoProfessores()
 // Função para ler os dados dos Técnicos ADM do arquivo
 void BancoDAO::lerArquivoTecnicoAdm()
 {
-    ifstream arquivo("tecnicosADM.txt");
-    if (arquivo.is_open())
+    ifstream arquivoT("tecnicosADM.txt");
+     if (!arquivoT.is_open())
+    {
+        cout << "Erro ao abrir o arquivo de técnicos administrativos." << endl;
+        return;
+    }
+    if (arquivoT.is_open())
     {
         float adicionalProdutividade;
         string funcaoDesempenhada;
@@ -156,7 +178,7 @@ void BancoDAO::lerArquivoTecnicoAdm()
         string cidade;
         string cep;
 
-        while (arquivo >> adicionalProdutividade >> funcaoDesempenhada >> matricula >> salario >>
+        while (arquivoT >> adicionalProdutividade >> funcaoDesempenhada >> matricula >> salario >>
                departamento >> cargaHoraria >> dataIngresso >> nome >> cpf >>
                dataNascimento >> genero >> rua >> numero >> bairro >> cidade >>
                cep)
@@ -167,30 +189,35 @@ void BancoDAO::lerArquivoTecnicoAdm()
                                   cidade, cep);
             tecnicosADMvector.push_back(tecnicoADM);
         }
-        arquivo.close();
+        arquivoT.close();
     }
 }
 
 // Função para salvar os dados dos Técnicos ADM no arquivo
 void BancoDAO::salvarArquivoTecnicoAdm()
 {
-    ofstream arquivo("tecnicosADM.txt");
-    if (arquivo.is_open())
+    ofstream arquivoT("tecnicosADM.txt");
+    if (!arquivoT.is_open())
+    {
+        cout << "Erro ao abrir o arquivo de técnicos administrativos para escrita." << endl;
+        return;
+    }
+    if (arquivoT.is_open())
     {
         for (const TecnicoAdm &tecnicoADM : tecnicosADMvector)
         {
-            arquivo << tecnicoADM.getAdicionalProdutividade() << " " << tecnicoADM.getFuncaoDesempenhada() << " "
-                    << tecnicoADM.getMatricula() << " " << tecnicoADM.getSalario()
-                    << " " << tecnicoADM.getDepartamento() << " "
-                    << tecnicoADM.getCargaHoraria() << " "
-                    << tecnicoADM.getDataIngresso() << " " << tecnicoADM.getNome()
-                    << " " << tecnicoADM.getCpf() << " "
-                    << tecnicoADM.getDataNascimento() << " " << tecnicoADM.getGenero()
-                    << " " << tecnicoADM.getRua() << " " << tecnicoADM.getNumero()
-                    << " " << tecnicoADM.getBairro() << " " << tecnicoADM.getCidade()
-                    << " " << tecnicoADM.getCep() << endl;
+            arquivoT << tecnicoADM.getAdicionalProdutividade() << " " << tecnicoADM.getFuncaoDesempenhada() << " "
+                     << tecnicoADM.getMatricula() << " " << tecnicoADM.getSalario()
+                     << " " << tecnicoADM.getDepartamento() << " "
+                     << tecnicoADM.getCargaHoraria() << " "
+                     << tecnicoADM.getDataIngresso() << " " << tecnicoADM.getNome()
+                     << " " << tecnicoADM.getCpf() << " "
+                     << tecnicoADM.getDataNascimento() << " " << tecnicoADM.getGenero()
+                     << " " << tecnicoADM.getRua() << " " << tecnicoADM.getNumero()
+                     << " " << tecnicoADM.getBairro() << " " << tecnicoADM.getCidade()
+                     << " " << tecnicoADM.getCep() << endl;
         }
-        arquivo.close();
+        arquivoT.close();
     }
 }
 
@@ -198,7 +225,8 @@ void BancoDAO::salvarArquivoTecnicoAdm()
 void BancoDAO::cadastrarTecnicoADM(TecnicoAdm novoTecnicoADM)
 {
     tecnicosADMvector.push_back(novoTecnicoADM);
-    // salvarArquivoTecnicoAdm();
+    cout << "\n\t===TecnicoADM cadastrado com sucesso!===\n"
+         << endl;
 }
 
 // Função para listar todos os Técnicos ADM

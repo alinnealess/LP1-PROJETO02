@@ -58,7 +58,6 @@ int main()
             cout << "Nome: ";
             cin.ignore();
             getline(cin, nome);
-            // cin >> nome;
             cout << "CPF: ";
             cin >> cpf;
             cout << "Data de Nascimento [xx.xx.xxxx]: ";
@@ -69,9 +68,8 @@ int main()
 
             cout << "\n--Endereco--" << endl;
             cout << "Rua: ";
-            cin.ignore(); // Limpa o buffer do teclado antes de usar getline
+            cin.ignore();
             getline(cin, rua);
-            // cin >> rua;
             cout << "Numero: ";
             cin >> numero;
             cout << "Bairro: ";
@@ -107,11 +105,13 @@ int main()
                                     matricula, salario, departamento, cargaHoraria, dataIngresso,
                                     nome, cpf, dataNascimento, genero, rua, numero, bairro, cidade, cep);
 
+            
             // Adiciona o novo professor ao banco de dados
             banco.cadastrarProfessor(novoProfessor);
-            cout << "\n\t===Professor cadastrado com sucesso!===\n"
-                 << endl;
-
+cout << "Matricula: " << novoProfessor.getMatricula() << endl;
+cout << "Salario: " << novoProfessor.getSalario() << endl;
+cout << "Departamento: " << novoProfessor.getDepartamento() << endl;
+cout << "Carga Horaria: " << novoProfessor.getCargaHoraria() << endl;
             break;
         }
         case 2:
@@ -162,7 +162,7 @@ int main()
             cin >> cep;
             cout << "Funcao Desempenhada: ";
             cin.ignore();
-            getline(cin, funcaoDesempenhada); 
+            getline(cin, funcaoDesempenhada);
             cout << "Matricula: ";
             cin >> matricula;
             cout << "Salario: ";
@@ -172,9 +172,6 @@ int main()
             cout << "Carga Horaria: ";
             cin >> cargaHoraria;
 
-            
-            
-
             // Cria um novo objeto TecnicoADM com os dados fornecidos
             TecnicoAdm novoTecnicoADM(adicionalProdutividade, funcaoDesempenhada,
                                       matricula, salario, departamento, cargaHoraria, dataIngresso,
@@ -183,7 +180,6 @@ int main()
                                       bairro, cidade, cep);
             // Adiciona o novo tecnicoADM ao banco de dados
             banco.cadastrarTecnicoADM(novoTecnicoADM);
-            cout << "\n\t===TecnicoADM cadastrado com sucesso!===\n" << endl;
 
             break;
         }
@@ -250,6 +246,7 @@ int main()
         // Salva alterações no arquivo após cada operação
         banco.salvarArquivoProfessores();
         banco.salvarArquivoTecnicoAdm();
+
     } while (opcao != 0);
 
     return 0;

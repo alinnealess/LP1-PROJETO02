@@ -12,6 +12,8 @@ private:
     std::vector<TecnicoAdm> tecnicosADMvector;
 
 public:
+    // Construtor que inicializa os vetores
+    BancoDAO();
     
     // Métodos para ler dados do arquivo
     void lerArquivoProfessores();
