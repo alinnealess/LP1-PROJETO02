@@ -14,7 +14,7 @@ int main()
     BancoDAO banco;
 
     // Lê os dados dos professores e técnicos administrativos do arquivo
-    banco.lerArquivoProfessores(); 
+    banco.lerArquivoProfessores();
     banco.lerArquivoTecnicoAdm();
 
     int opcao;
@@ -22,7 +22,8 @@ int main()
     cout << "\t-----------------------------------" << endl;
     cout << "\t------Bem-vindo ao SIS-IMDCorp-----" << endl;
     cout << "\t-----------------------------------" << endl;
-    cout << "\t-----------------------------------\n"<< endl;
+    cout << "\t-----------------------------------\n"
+         << endl;
 
     // Loop principal do programa
     do
@@ -47,7 +48,7 @@ int main()
             // Cadastrar Professor
             // Solicita informações do usuário
             string nome, cpf, dataNascimento, genero, departamento, dataIngresso, matricula;
-            
+
             int numero, cargaHoraria;
             string rua, bairro, cidade, cep;
             string formacao, nivel, disciplina;
@@ -60,15 +61,15 @@ int main()
             // cin >> nome;
             cout << "CPF: ";
             cin >> cpf;
-            cout << "Data de Nascimento: ";
+            cout << "Data de Nascimento [xx.xx.xxxx]: ";
             cin >> dataNascimento;
-            cout << "Genero [Feminino = F, Masculino = M] "<< endl;
+            cout << "Genero [Feminino = F, Masculino = M] " << endl;
             cout << "Genero: ";
             cin >> genero;
 
             cout << "\n--Endereco--" << endl;
             cout << "Rua: ";
-            cin.ignore();  // Limpa o buffer do teclado antes de usar getline
+            cin.ignore(); // Limpa o buffer do teclado antes de usar getline
             getline(cin, rua);
             // cin >> rua;
             cout << "Numero: ";
@@ -94,65 +95,96 @@ int main()
             cout << "Formacao [GRADUACAO = 1, ESPECIALIZACAO = 2, MESTRADO = 3, DOUTORADO = 4]" << endl;
             cout << "Formacao: ";
             cin >> formacao;
-            cout << "Nivel [I = 1, II = 2, III = 3, IV = 4, V = 5, VI = 6, VII = 7, VIII = 8]" << endl ;
+            cout << "Nivel [I = 1, II = 2, III = 3, IV = 4, V = 5, VI = 6, VII = 7, VIII = 8]" << endl;
             cout << "Nivel: ";
             cin >> nivel;
             cout << "Disciplina: ";
-            cin >> disciplina;
+            cin.ignore();
+            getline(cin, disciplina);
 
-             // Cria um novo objeto Professor com os dados fornecidos  
+            // Cria um novo objeto Professor com os dados fornecidos
             Professor novoProfessor(formacao, nivel, disciplina,
-                matricula, salario, departamento, cargaHoraria, dataIngresso,
-                nome, cpf, dataNascimento, genero, rua, numero, bairro, cidade, cep);
+                                    matricula, salario, departamento, cargaHoraria, dataIngresso,
+                                    nome, cpf, dataNascimento, genero, rua, numero, bairro, cidade, cep);
 
             // Adiciona o novo professor ao banco de dados
             banco.cadastrarProfessor(novoProfessor);
-            cout << "\n\t===Professor cadastrado com sucesso!===\n" << endl;
+            cout << "\n\t===Professor cadastrado com sucesso!===\n"
+                 << endl;
 
             break;
         }
         case 2:
         {
             // Cadastrar TecnicoADM
-            // string nome, cpf, dataNascimento, genero, funcao;
-            // int numero;
-            // string rua, bairro, cidade, cep;
-            // float adicional;
+            float adicionalProdutividade;
+            string funcaoDesempenhada;
+            string matricula;
+            float salario;
+            string departamento;
+            int cargaHoraria;
+            string dataIngresso;
+            string nome;
+            string cpf;
+            string dataNascimento;
+            string genero;
+            string rua;
+            int numero;
+            string bairro;
+            string cidade;
+            string cep;
 
-            // cout << "\t\n--Informe os dados do TecnicoADM--" << endl;
-            // cout << "Nome: ";
-            // cin >> nome;
-            // cout << "CPF: ";
-            // cin >> cpf;
-            // cout << "Data de Nascimento: ";
-            // cin >> dataNascimento;
-            // cout << "Genero: ";
-            // cin >> genero;
-            // cout << "--Endereco--" << endl;
-            // cout << "Rua: ";
-            // cin >> rua;
-            // cout << "Numero: ";
-            // cin >> numero;
-            // cout << "Bairro: ";
-            // cin >> bairro;
-            // cout << "Cidade: ";
-            // cin >> cidade;
-            // cout << "CEP: ";
-            // cin >> cep;
-            // cout << "Funcao: ";
-            // cin >> funcao;
+            cout << "\t\n--Informe os dados do TecnicoADM--" << endl;
+            cout << "Nome: ";
+            cin.ignore();
+            getline(cin, nome);
+            cout << "CPF: ";
+            cin >> cpf;
+            cout << "Data de Nascimento [xx.xx.xxxx]: ";
+            cin >> dataNascimento;
+            cout << "Genero [Feminino = F, Masculino = M] " << endl;
+            cout << "Genero: ";
+            cin >> genero;
 
-            // Endereco endereco;
-            // endereco.setRua(rua);
-            // endereco.setNumero(numero);
-            // endereco.setBairro(bairro);
-            // endereco.setCidade(cidade);
-            // endereco.setCep(cep);
+            cout << "\n--Endereco--" << endl;
+            cout << "Rua: ";
+            cin.ignore();
+            getline(cin, rua);
+            cout << "Numero: ";
+            cin >> numero;
+            cout << "Bairro: ";
+            cin.ignore();
+            getline(cin, bairro);
+            cout << "Cidade: ";
+            cin.ignore();
+            getline(cin, cidade);
+            cout << "CEP: ";
+            cin >> cep;
+            cout << "Funcao Desempenhada: ";
+            cin.ignore();
+            getline(cin, funcaoDesempenhada); 
+            cout << "Matricula: ";
+            cin >> matricula;
+            cout << "Salario: ";
+            cin >> salario;
+            cout << "Departamento: ";
+            cin >> departamento;
+            cout << "Carga Horaria: ";
+            cin >> cargaHoraria;
 
-            // TecnicoAdm novoTecnico(adicional, funcao);
-            // banco.cadastrarTecnicoADM(novoTecnico);
-            // cout << "\t\nTecnicoADM cadastrado com sucesso!\n"
-            //      << endl;
+            
+            
+
+            // Cria um novo objeto TecnicoADM com os dados fornecidos
+            TecnicoAdm novoTecnicoADM(adicionalProdutividade, funcaoDesempenhada,
+                                      matricula, salario, departamento, cargaHoraria, dataIngresso,
+                                      nome, cpf, dataNascimento,
+                                      genero, rua, numero,
+                                      bairro, cidade, cep);
+            // Adiciona o novo tecnicoADM ao banco de dados
+            banco.cadastrarTecnicoADM(novoTecnicoADM);
+            cout << "\n\t===TecnicoADM cadastrado com sucesso!===\n" << endl;
+
             break;
         }
         case 3:

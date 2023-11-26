@@ -51,7 +51,7 @@ void BancoDAO::lerArquivoProfessores()
 void BancoDAO::cadastrarProfessor(Professor novoProfessor)
 {
     professoresvector.push_back(novoProfessor);
-    salvarArquivoProfessores();
+    // salvarArquivoProfessores();
 }
 
 // Função para listar todos os professores
@@ -69,6 +69,8 @@ void BancoDAO::listarProfessores() const
              << " " << professor.getGenero() << " " << professor.getRua() << " "
              << professor.getNumero() << " " << professor.getBairro() << " "
              << professor.getCidade() << " " << professor.getCep() << endl;
+        cout << "-------------------------------------------------------------------\n"
+             << endl;
     }
 }
 
@@ -168,6 +170,7 @@ void BancoDAO::lerArquivoTecnicoAdm()
         arquivo.close();
     }
 }
+
 // Função para salvar os dados dos Técnicos ADM no arquivo
 void BancoDAO::salvarArquivoTecnicoAdm()
 {
@@ -195,7 +198,7 @@ void BancoDAO::salvarArquivoTecnicoAdm()
 void BancoDAO::cadastrarTecnicoADM(TecnicoAdm novoTecnicoADM)
 {
     tecnicosADMvector.push_back(novoTecnicoADM);
-    salvarArquivoTecnicoAdm();
+    // salvarArquivoTecnicoAdm();
 }
 
 // Função para listar todos os Técnicos ADM
@@ -203,7 +206,7 @@ void BancoDAO::listarTecnicosADM() const
 {
     for (const TecnicoAdm &tecnicoADM : tecnicosADMvector)
     {
-        // Print or manipulate technical administrative staff data here
+
         cout << tecnicoADM.getAdicionalProdutividade() << " "
              << tecnicoADM.getFuncaoDesempenhada() << " "
              << tecnicoADM.getMatricula() << " "
@@ -239,8 +242,6 @@ void BancoDAO::buscarTecnicoADM(string matricula) const
     {
         if (tecnicoADM.getMatricula() == matricula)
         {
-            // Found the technical administrative staff, you can perform actions here
-            // For example, output the details of the matched staff
             cout << tecnicoADM.getAdicionalProdutividade() << " "
                  << tecnicoADM.getFuncaoDesempenhada() << " "
                  << tecnicoADM.getMatricula() << " "
