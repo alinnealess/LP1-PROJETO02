@@ -18,26 +18,26 @@ int main()
     banco.lerArquivoTecnicoAdm();
 
     int opcao;
-    cout << "\t-----------------------------------" << endl;
-    cout << "\t-----------------------------------" << endl;
-    cout << "\t------Bem-vindo ao SIS-IMDCorp-----" << endl;
-    cout << "\t-----------------------------------" << endl;
-    cout << "\t-----------------------------------\n"
-         << endl;
+    cout << "\n===================================" << endl;
+    cout << "=---------------------------------=" << endl;
+    cout << "=---- Bem-vindo ao SIS-IMDCorp ---=" << endl;
+    cout << "=---------------------------------=" << endl;
+    cout << "===================================" << endl;
 
     // Loop principal do programa
     do
     {
-        cout << "1. Cadastrar Professor" << endl;
-        cout << "2. Cadastrar TecnicoADM" << endl;
-        cout << "3. Listar Professores" << endl;
-        cout << "4. Listar Tecnicos ADM" << endl;
-        cout << "5. Deletar Professor" << endl;
-        cout << "6. Deletar Tecnico ADM" << endl;
-        cout << "7. Buscar Professor" << endl;
-        cout << "8. Buscar TecnicoADM" << endl;
-        cout << "0. Sair" << endl;
-        cout << "\nEscolha uma opcao: ";
+        cout << "\n\t=== MENU PRINCIPAL ===" << endl;
+        cout << "\n\t1. Cadastrar Professor" << endl;
+        cout << "\t2. Cadastrar TecnicoADM" << endl;
+        cout << "\t3. Listar Professores" << endl;
+        cout << "\t4. Listar Tecnicos ADM" << endl;
+        cout << "\t5. Deletar Professor" << endl;
+        cout << "\t6. Deletar Tecnico ADM" << endl;
+        cout << "\t7. Buscar Professor" << endl;
+        cout << "\t8. Buscar TecnicoADM" << endl;
+        cout << "\t0. Sair" << endl;
+        cout << "Escolha uma opcao: ";
         cin >> opcao;
 
         // Switch para processar a escolha do usuário
@@ -48,7 +48,6 @@ int main()
             // Cadastrar Professor
             // Solicita informações do usuário
             string nome, cpf, dataNascimento, genero, departamento, dataIngresso, matricula;
-
             int numero, cargaHoraria;
             string rua, bairro, cidade, cep;
             string formacao, nivel, disciplina;
@@ -83,14 +82,16 @@ int main()
 
             cout << "Matricula: ";
             cin >> matricula;
-            cout << "Salario: ";
+            cout << "Salario: R$ ";
             cin >> salario;
             cout << "Departamento: ";
             cin >> departamento;
             cout << "Carga Horaria: ";
             cin >> cargaHoraria;
+            cout << "Data Ingresso [xx.xx.xxxx]: ";
+            cin >> dataIngresso;
 
-            cout << "Formacao [GRADUACAO = 1, ESPECIALIZACAO = 2, MESTRADO = 3, DOUTORADO = 4]" << endl;
+            cout << "Formacao [ESPECIALIZACAO = 1, MESTRADO = 2, DOUTORADO = 3]" << endl;
             cout << "Formacao: ";
             cin >> formacao;
             cout << "Nivel [I = 1, II = 2, III = 3, IV = 4, V = 5, VI = 6, VII = 7, VIII = 8]" << endl;
@@ -105,34 +106,21 @@ int main()
                                     matricula, salario, departamento, cargaHoraria, dataIngresso,
                                     nome, cpf, dataNascimento, genero, rua, numero, bairro, cidade, cep);
 
-            
             // Adiciona o novo professor ao banco de dados
             banco.cadastrarProfessor(novoProfessor);
-cout << "Matricula: " << novoProfessor.getMatricula() << endl;
-cout << "Salario: " << novoProfessor.getSalario() << endl;
-cout << "Departamento: " << novoProfessor.getDepartamento() << endl;
-cout << "Carga Horaria: " << novoProfessor.getCargaHoraria() << endl;
+
             break;
         }
         case 2:
         {
             // Cadastrar TecnicoADM
-            float adicionalProdutividade;
-            string funcaoDesempenhada;
-            string matricula;
-            float salario;
+            float adicionalProdutividade, salario;
+            string funcaoDesempenhada, matricula;
             string departamento;
-            int cargaHoraria;
             string dataIngresso;
-            string nome;
-            string cpf;
-            string dataNascimento;
-            string genero;
-            string rua;
-            int numero;
-            string bairro;
-            string cidade;
-            string cep;
+            string nome, cpf, dataNascimento, genero;
+            string rua, bairro, cidade, cep;
+            int cargaHoraria, numero;
 
             cout << "\t\n--Informe os dados do TecnicoADM--" << endl;
             cout << "Nome: ";
@@ -165,7 +153,7 @@ cout << "Carga Horaria: " << novoProfessor.getCargaHoraria() << endl;
             getline(cin, funcaoDesempenhada);
             cout << "Matricula: ";
             cin >> matricula;
-            cout << "Salario: ";
+            cout << "Salario: R$";
             cin >> salario;
             cout << "Departamento: ";
             cin >> departamento;
@@ -180,18 +168,20 @@ cout << "Carga Horaria: " << novoProfessor.getCargaHoraria() << endl;
                                       bairro, cidade, cep);
             // Adiciona o novo tecnicoADM ao banco de dados
             banco.cadastrarTecnicoADM(novoTecnicoADM);
-
             break;
         }
+
         case 3:
-            // Listar Professores
+        { // Listar Professores
             banco.listarProfessores();
             break;
+        }
 
         case 4:
-            // Listar TecnicosADM
+        { // Listar TecnicosADM
             banco.listarTecnicosADM();
             break;
+        }
 
         case 5:
         {
@@ -236,11 +226,9 @@ cout << "Carga Horaria: " << novoProfessor.getCargaHoraria() << endl;
         }
 
         case 0:
-            // Sair
+        { // Sair
             break;
-
-        default:
-            cout << "Opção invalida.\n";
+        }
         }
 
         // Salva alterações no arquivo após cada operação
@@ -248,6 +236,10 @@ cout << "Carga Horaria: " << novoProfessor.getCargaHoraria() << endl;
         banco.salvarArquivoTecnicoAdm();
 
     } while (opcao != 0);
+
+    cout << "\n\t===============================" << endl;
+    cout << "\t=======Sistema Encerrado=======" << endl;
+    cout << "\t===============================" << endl;
 
     return 0;
 }

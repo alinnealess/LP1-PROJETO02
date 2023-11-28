@@ -4,7 +4,7 @@
 #include <string>
 #include "funcionario.hpp"
 
-class Professor : public Funcionario, public Pessoa
+class Professor : public Pessoa, public Funcionario
 {
 public:
     std::string nivel;
@@ -14,10 +14,11 @@ private:
     std::string disciplina;
 
 public:
-    Professor(){}
+    //Professor(){}
     //  Construtor parametrizado
     Professor(std::string formacao, std::string nivel, std::string disciplina,
               std::string matricula, float salario, std::string departamento, int cargaHoraria, std::string dataIngresso,
+
               std::string nome, std::string cpf, std::string dataNascimento,
               std::string genero, std::string rua, int numero,
               std::string bairro, std::string cidade, std::string cep);

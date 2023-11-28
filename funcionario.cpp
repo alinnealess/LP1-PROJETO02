@@ -2,7 +2,7 @@
 
 using namespace std;
 
-// Funcionario() {}
+
 // Construtor parametrizado
 Funcionario::Funcionario(string matricula, float salario, string departamento, int cargaHoraria, string dataIngresso){}
 

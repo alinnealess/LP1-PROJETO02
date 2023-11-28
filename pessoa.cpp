@@ -9,22 +9,22 @@ Pessoa::Pessoa(string nome, string cpf, string dataNascimento, string genero,
 // Métodos getters
 string Pessoa::getNome() const
 {
-    return nome;
+    return this -> nome;
 }
 
 string Pessoa::getCpf() const
 {
-    return cpf;
+    return this -> cpf;
 }
 
 string Pessoa::getDataNascimento() const
 {
-    return dataNascimento;
+    return this -> dataNascimento;
 }
 
 string Pessoa::getGenero() const
 {
-    return genero;
+    return this -> genero;
 }
 
 // Métodos setters
