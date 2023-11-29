@@ -9,51 +9,90 @@ BancoDAO::BancoDAO() {}
 
 // ===Funções relacionadas a Professores===
 
+// void BancoDAO::lerArquivoProfessores()
+// {
+//     fstream arquivo;
+//     string linha;
+//     arquivo.open("professores.txt", ios::in);
+//     while (getline(arquivo, linha))
+//     {
+//         if (!arquivo.is_open())
+//         {
+//             cout << "Erro ao abrir o arquivo de professores." << endl;
+//             return;
+//         }
+
+//         while (getline(arquivo, linha))
+//         {
+//             // Dividir a linha em campos
+            
+//             string formacao;
+//             string nivel;
+//             string disciplina;
+//             string matricula;
+//             float salario;
+//             string departamento;
+//             int cargaHoraria;
+//             string dataIngresso;
+//             string nome;
+//             string cpf;
+//             string dataNascimento;
+//             string genero;
+//             string rua;
+//             int numero;
+//             string bairro;
+//             string cidade;
+//             string cep;
+
+//             arquivo >> formacao >> nivel >> disciplina >> matricula >> salario >> departamento >> cargaHoraria >> dataIngresso >> nome >> cpf >> dataNascimento >> genero >> rua >> numero >> bairro >> cidade >> cep;
+
+//             // Criar um objeto Professor
+//             Professor professor(formacao, nivel, disciplina, matricula, salario, departamento, cargaHoraria, dataIngresso, nome, cpf, dataNascimento, genero, rua, numero, bairro, cidade, cep);
+
+//             // Adicionar o objeto ao vetor
+//             professoresvector.push_back(professor);
+//         }
+//         arquivo.close();
+//     }
+// }
 void BancoDAO::lerArquivoProfessores()
 {
-    fstream arquivo;
-    string linha;
-    arquivo.open("professores.txt", ios::in);
-    while (getline(arquivo, linha))
+    ifstream arquivo("professores.txt");
+    if (!arquivo.is_open())
     {
-        if (!arquivo.is_open())
-        {
-            cout << "Erro ao abrir o arquivo de professores." << endl;
-            return;
-        }
-
-        while (getline(arquivo, linha))
-        {
-            // Dividir a linha em campos
-            
-            string formacao;
-            string nivel;
-            string disciplina;
-            string matricula;
-            float salario;
-            string departamento;
-            int cargaHoraria;
-            string dataIngresso;
-            string nome;
-            string cpf;
-            string dataNascimento;
-            string genero;
-            string rua;
-            int numero;
-            string bairro;
-            string cidade;
-            string cep;
-
-            arquivo >> formacao >> nivel >> disciplina >> matricula >> salario >> departamento >> cargaHoraria >> dataIngresso >> nome >> cpf >> dataNascimento >> genero >> rua >> numero >> bairro >> cidade >> cep;
-
-            // Criar um objeto Professor
-            Professor professor(formacao, nivel, disciplina, matricula, salario, departamento, cargaHoraria, dataIngresso, nome, cpf, dataNascimento, genero, rua, numero, bairro, cidade, cep);
-
-            // Adicionar o objeto ao vetor
-            professoresvector.push_back(professor);
-        }
-        arquivo.close();
+        cout << "Erro ao abrir o arquivo de professores." << endl;
+        return;
     }
+
+    string formacao;
+    string nivel;
+    string disciplina;
+    string matricula;
+    string salarioStr;
+    string departamento;
+    string cargaHorariaStr;
+    string dataIngresso;
+    string nome;
+    string cpf;
+    string dataNascimento;
+    string genero;
+    string rua;
+    string numeroStr;
+    string bairro;
+    string cidade;
+    string cep;
+
+    while (getline(arquivo, formacao) && getline(arquivo, nivel) && getline(arquivo, disciplina) && getline(arquivo, matricula) && getline(arquivo, salarioStr) && getline(arquivo, departamento) && getline(arquivo, cargaHorariaStr) && getline(arquivo, dataIngresso) && getline(arquivo, nome) && getline(arquivo, cpf) && getline(arquivo, dataNascimento) && getline(arquivo, genero) && getline(arquivo, rua) && getline(arquivo, numeroStr) && getline(arquivo, bairro) && getline(arquivo, cidade) && getline(arquivo, cep))
+    {
+        float salario = stof(salarioStr);
+        int cargaHoraria = stoi(cargaHorariaStr);
+        int numero = stoi(numeroStr);
+
+        Professor professor(formacao, nivel, disciplina, matricula, salario, departamento, cargaHoraria, dataIngresso, nome, cpf, dataNascimento, genero, rua, numero, bairro, cidade, cep);
+        professoresvector.push_back(professor);
+    }
+
+    arquivo.close();
 }
 
 void BancoDAO::salvarArquivoProfessores()
