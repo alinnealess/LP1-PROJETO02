@@ -12,60 +12,47 @@ BancoDAO::BancoDAO() {}
 void BancoDAO::lerArquivoProfessores()
 {
     fstream arquivo;
+    string linha;
     arquivo.open("professores.txt", ios::in);
-    if (arquivo.is_open())
+    while (getline(arquivo, linha))
     {
-        string formacao;
-        string nivel;
-        string disciplina;
-        string matricula;
-        float salario;
-        string departamento;
-        int cargaHoraria;
-        string dataIngresso;
-        string nome;
-        string cpf;
-        string dataNascimento;
-        string genero;
-        string rua;
-        int numero;
-        string bairro;
-        string cidade;
-        string cep;
-
-        while (arquivo >> formacao >> nivel >> disciplina >> matricula >> salario >>
-               departamento >> cargaHoraria >> dataIngresso >> nome >> cpf >>
-               dataNascimento >> genero >> rua >> numero >> bairro >> cidade >> cep)
+        if (!arquivo.is_open())
         {
-
-            Professor professor(formacao, nivel, disciplina, matricula, salario,
-                                departamento, cargaHoraria, dataIngresso, nome, cpf,
-                                dataNascimento, genero, rua, numero, bairro, cidade,
-                                cep);
-            professoresvector.push_back(professor);
-            cout << professor.getNome() << endl;
-            cout << professor.getCpf() << endl;
-            cout << professor.getMatricula() << endl;
-            cout << professor.getSalario() << endl;
-            cout << professor.getDepartamento() << endl;
-            cout << professor.getCargaHoraria() << endl;
-            cout << professor.getDataIngresso() << endl;
-            cout << professor.getGenero() << endl;
-            cout << professor.getRua() << endl;
-            cout << professor.getNumero() << endl;
-            cout << professor.getBairro() << endl;
-            cout << professor.getCidade() << endl;
-            cout << professor.getCep() << endl;
-            cout << professor.getNivel() << endl;
-            cout << professor.getDisciplina() << endl;
-            cout << professor.getDataNascimento() << endl;
-            cout << endl;
+            cout << "Erro ao abrir o arquivo de professores." << endl;
+            return;
         }
-        // arquivo.close();
-    }
-    else
-    {
-        cout << "Não foi possível abrir o arquivo" << endl;
+
+        while (getline(arquivo, linha))
+        {
+            // Dividir a linha em campos
+            
+            string formacao;
+            string nivel;
+            string disciplina;
+            string matricula;
+            float salario;
+            string departamento;
+            int cargaHoraria;
+            string dataIngresso;
+            string nome;
+            string cpf;
+            string dataNascimento;
+            string genero;
+            string rua;
+            int numero;
+            string bairro;
+            string cidade;
+            string cep;
+
+            arquivo >> formacao >> nivel >> disciplina >> matricula >> salario >> departamento >> cargaHoraria >> dataIngresso >> nome >> cpf >> dataNascimento >> genero >> rua >> numero >> bairro >> cidade >> cep;
+
+            // Criar um objeto Professor
+            Professor professor(formacao, nivel, disciplina, matricula, salario, departamento, cargaHoraria, dataIngresso, nome, cpf, dataNascimento, genero, rua, numero, bairro, cidade, cep);
+
+            // Adicionar o objeto ao vetor
+            professoresvector.push_back(professor);
+        }
+        arquivo.close();
     }
 }
 
@@ -75,22 +62,22 @@ void BancoDAO::salvarArquivoProfessores()
     arquivo.open("professores.txt", ios::out);
     for (Professor professor : professoresvector)
     {
-        arquivo << professor.getFormacao() << " "
-                << professor.getNivel() << " "
-                << professor.getDisciplina() << " "
-                << professor.getMatricula() << " "
-                << professor.getSalario() << " "
-                << professor.getDepartamento() << " "
-                << professor.getCargaHoraria() << " "
-                << professor.getDataIngresso() << " "
-                << professor.getNome() << " "
-                << professor.getCpf() << " "
-                << professor.getDataNascimento() << " "
-                << professor.getGenero() << " "
-                << professor.getRua() << " "
-                << professor.getNumero() << " "
-                << professor.getBairro() << " "
-                << professor.getCidade() << " "
+        arquivo << professor.getFormacao() << "\n"
+                << professor.getNivel() << "\n"
+                << professor.getDisciplina() << "\n"
+                << professor.getMatricula() << "\n"
+                << professor.getSalario() << "\n"
+                << professor.getDepartamento() << "\n"
+                << professor.getCargaHoraria() << "\n"
+                << professor.getDataIngresso() << "\n"
+                << professor.getNome() << "\n"
+                << professor.getCpf() << "\n"
+                << professor.getDataNascimento() << "\n"
+                << professor.getGenero() << "\n"
+                << professor.getRua() << "\n"
+                << professor.getNumero() << "\n"
+                << professor.getBairro() << "\n "
+                << professor.getCidade() << "\n "
                 << professor.getCep() << endl;
     }
     arquivo.close();
