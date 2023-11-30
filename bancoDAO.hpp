@@ -13,24 +13,23 @@ private:
     std::vector<TecnicoAdm> tecnicosADMvector;
 
 public:
- 
-    // ######Professores#########
-    //  Métodos para ler dados do arquivo
+    // Métodos para ler e salvar dados do arquivo
     void lerArquivoProfessores();
-    void salvarArquivoProfessores(); // Métodos para salvar dados do arquivo
-    void cadastrarProfessor(Professor novoProfessor); // Métodos para cadastrar professores
-    void listarProfessores(); // Métodos para listar professores
-    void deletarProfessor(int matricula);// Métodos para deletar professores e tecnicosADM
-    void buscarProfessor(int matricula); // Métodos para buscar professores e tecnicosADM
+    void salvarArquivoProfessores();
+    void lerArquivoTecnicoAdm();
+    void salvarArquivoTecnicoAdm();
 
+    // Métodos para cadastrar, listar, deletar e buscar professores
+    void cadastrarProfessor(const Professor& novoProfessor);
+    void listarProfessores();
+    void deletarProfessor(int matricula);
+    void buscarProfessor(int matricula);
 
-    // ######Tecnicos Administrativos######
-    void lerArquivoTecnicoAdm(); //Métodos para ler dados do arquivo
-    void salvarArquivoTecnicoAdm(); //Métodos para salvar dados do arquivo
-    void cadastrarTecnicoADM(TecnicoAdm& novoTecnicoADM); //Métodos para cadastrar tecnicosADM
-    void listarTecnicosADM(); // Métodos para listar tecnicosADM
-    void deletarTecnicoADM(int matricula); //Métodos para deletar professores e tecnicosADM
-    void buscarTecnicoADM(int matricula); //Métodos para buscar professores e tecnicosADM
+    // Métodos para cadastrar, listar, deletar e buscar técnicos administrativos
+    void cadastrarTecnicoADM(TecnicoAdm& novoTecnicoADM);
+    void listarTecnicosADM();
+    void deletarTecnicoADM(int matricula);
+    void buscarTecnicoADM(int matricula);
 };
 
 #endif

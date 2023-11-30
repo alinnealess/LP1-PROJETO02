@@ -27,7 +27,7 @@ public:
 
   // Métodos getter e setter para a função desempenhada
   std::string getFuncaoDesempenhada() const;
-  void setFuncaoDesempenhada(std::string funcaoDesempenhada);
+  void setFuncaoDesempenhada(const std::string& funcaoDesempenhada);
 };
 
 #endif

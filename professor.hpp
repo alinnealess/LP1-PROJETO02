@@ -14,29 +14,25 @@ private:
 
 public:
     Professor() {}
-    Professor(std::string formacao, std::string nivel, std::string disciplina)
-        : nivel(nivel),
-          formacao(formacao),
-          disciplina(disciplina) {}
     //  Construtor parametrizado
-    Professor(std::string formacao, std::string nivel, std::string disciplina,
-              std::string matricula, float salario, std::string departamento, int cargaHoraria, std::string dataIngresso,
+    Professor(const std::string &formacao, const std::string &nivel, const std::string &disciplina,
+              const std::string &matricula, float salario, const std::string &departamento, int cargaHoraria, const std::string &dataIngresso,
 
-              std::string nome, std::string cpf, std::string dataNascimento,
-              std::string genero, std::string rua, int numero,
-              std::string bairro, std::string cidade, std::string cep);
+              const std::string &nome, const std::string &cpf, const std::string &dataNascimento,
+              const std::string &genero, const std::string &rua, int numero,
+              const std::string &bairro, const std::string &cidade, const std::string &cep);
 
     // Métodos getter e setter para o nível
-    std::string getNivel() ;
-    void setNivel(std::string nivel);
+    std::string getNivel() const;
+    void setNivel(const std::string &nivel);
 
     // Métodos getter e setter para a formação
-    std::string getFormacao() ;
-    void setFormacao(std::string formacao);
+    std::string getFormacao() const;
+    void setFormacao(const std::string &formacao);
 
     // Métodos getter e setter para a disciplina
-    std::string getDisciplina() ;
-    void setDisciplina(std::string disciplina);
+    std::string getDisciplina() const;
+    void setDisciplina(const std::string &disciplina);
 };
 
 #endif

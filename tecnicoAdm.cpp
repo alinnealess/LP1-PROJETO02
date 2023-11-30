@@ -30,7 +30,7 @@ string TecnicoAdm::getFuncaoDesempenhada() const
     return this->funcaoDesempenhada;
 }
 
-void TecnicoAdm::setFuncaoDesempenhada(string funcaoDesempenhada)
+void TecnicoAdm::setFuncaoDesempenhada(const std::string& funcaoDesempenhada)
 {
     this->funcaoDesempenhada = funcaoDesempenhada;
 }

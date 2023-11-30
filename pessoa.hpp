@@ -27,12 +27,15 @@ public:
   std::string getCpf() const;
   std::string getDataNascimento() const;
   std::string getGenero() const;
+  Endereco getEndereco() const;
 
   // Métodos setters
   void setNome(std::string nome);
   void setCpf(std::string cpf);
   void setDataNascimento(std::string dataNascimento);
   void setGenero(std::string genero);
+  void setEndereco(const Endereco& endereco);
+
 };
 
 #endif

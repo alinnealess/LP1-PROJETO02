@@ -23,7 +23,7 @@ float Funcionario::getSalario() const
     return this->salario;
 }
 
-void Funcionario::setSalario(float salario)
+void Funcionario::setSalario(const float salario)
 {
     this->salario = salario;
 }
@@ -34,7 +34,7 @@ string Funcionario::getDepartamento() const
     return this->departamento;
 }
 
-void Funcionario::setDepartamento(string departamento)
+void Funcionario::setDepartamento(const string departamento)
 {
     this->departamento = departamento;
 }
@@ -45,7 +45,7 @@ int Funcionario::getCargaHoraria() const
     return this->cargaHoraria;
 }
 
-void Funcionario::setCargaHoraria(int cargaHoraria)
+void Funcionario::setCargaHoraria(const int cargaHoraria)
 {
     this->cargaHoraria = cargaHoraria;
 }
