@@ -3,195 +3,157 @@
 #include <fstream>
 #include <vector>
 #include <string>
+#include <iomanip>
 
 using namespace std;
-BancoDAO::BancoDAO() {}
 
 // ===Funções relacionadas a Professores===
 
-// void BancoDAO::lerArquivoProfessores()
-// {
-//     fstream arquivo;
-//     string linha;
-//     arquivo.open("professores.txt", ios::in);
-//     while (getline(arquivo, linha))
-//     {
-//         if (!arquivo.is_open())
-//         {
-//             cout << "Erro ao abrir o arquivo de professores." << endl;
-//             return;
-//         }
-
-//         while (getline(arquivo, linha))
-//         {
-//             // Dividir a linha em campos
-            
-//             string formacao;
-//             string nivel;
-//             string disciplina;
-//             string matricula;
-//             float salario;
-//             string departamento;
-//             int cargaHoraria;
-//             string dataIngresso;
-//             string nome;
-//             string cpf;
-//             string dataNascimento;
-//             string genero;
-//             string rua;
-//             int numero;
-//             string bairro;
-//             string cidade;
-//             string cep;
-
-//             arquivo >> formacao >> nivel >> disciplina >> matricula >> salario >> departamento >> cargaHoraria >> dataIngresso >> nome >> cpf >> dataNascimento >> genero >> rua >> numero >> bairro >> cidade >> cep;
-
-//             // Criar um objeto Professor
-//             Professor professor(formacao, nivel, disciplina, matricula, salario, departamento, cargaHoraria, dataIngresso, nome, cpf, dataNascimento, genero, rua, numero, bairro, cidade, cep);
-
-//             // Adicionar o objeto ao vetor
-//             professoresvector.push_back(professor);
-//         }
-//         arquivo.close();
-//     }
-// }
 void BancoDAO::lerArquivoProfessores()
 {
-    ifstream arquivo("professores.txt");
+    fstream arquivo;
+    arquivo.open("professores.txt", ios::in); // Abre o arquivo em modo de leitura
+    string linha;
     if (!arquivo.is_open())
     {
         cout << "Erro ao abrir o arquivo de professores." << endl;
-        return;
+        return; // Retorna se houver erro ao abrir o arquivo
     }
 
-    string formacao;
-    string nivel;
-    string disciplina;
-    string matricula;
-    string salarioStr;
-    string departamento;
-    string cargaHorariaStr;
-    string dataIngresso;
-    string nome;
-    string cpf;
-    string dataNascimento;
-    string genero;
-    string rua;
-    string numeroStr;
-    string bairro;
-    string cidade;
-    string cep;
-
-    while (getline(arquivo, formacao) && getline(arquivo, nivel) && getline(arquivo, disciplina) && getline(arquivo, matricula) && getline(arquivo, salarioStr) && getline(arquivo, departamento) && getline(arquivo, cargaHorariaStr) && getline(arquivo, dataIngresso) && getline(arquivo, nome) && getline(arquivo, cpf) && getline(arquivo, dataNascimento) && getline(arquivo, genero) && getline(arquivo, rua) && getline(arquivo, numeroStr) && getline(arquivo, bairro) && getline(arquivo, cidade) && getline(arquivo, cep))
+    while (getline(arquivo, linha))
     {
-        float salario = stof(salarioStr);
-        int cargaHoraria = stoi(cargaHorariaStr);
-        int numero = stoi(numeroStr);
+        // Declaração de variáveis para armazenar os atributos do Professor
+        string formacao, nivel, disciplina, matricula, departamento, dataIngresso, nome, cpf, dataNascimento, genero, rua, bairro, cidade, cep;
+        float salario;
+        int cargaHoraria, numero;
 
+        // Leitura dos atributos do Professor do arquivo
+        getline(arquivo, formacao);
+        getline(arquivo, nivel);
+        getline(arquivo, disciplina);
+        getline(arquivo, matricula);
+        arquivo >> salario;
+        arquivo.ignore();
+
+        getline(arquivo, departamento);
+        arquivo >> cargaHoraria;
+        arquivo.ignore();
+        getline(arquivo, dataIngresso);
+
+        getline(arquivo, nome);
+        getline(arquivo, cpf);
+        getline(arquivo, dataNascimento);
+        getline(arquivo, genero);
+
+        getline(arquivo, rua);
+        arquivo >> numero;
+        arquivo.ignore();
+        getline(arquivo, bairro);
+        getline(arquivo, cidade);
+        getline(arquivo, cep);
+
+        // Criação de um objeto Professor com os dados lidos e o adiciona ao vetor
         Professor professor(formacao, nivel, disciplina, matricula, salario, departamento, cargaHoraria, dataIngresso, nome, cpf, dataNascimento, genero, rua, numero, bairro, cidade, cep);
-        professoresvector.push_back(professor);
-    }
 
-    arquivo.close();
+        professoresVector.push_back(professor);
+    
+       
+    }
+    arquivo.close(); // Fecha o arquivo após a leitura
 }
 
-void BancoDAO::salvarArquivoProfessores()
-{
-    fstream arquivo;
-    arquivo.open("professores.txt", ios::out);
-    for (Professor professor : professoresvector)
-    {
-        arquivo << professor.getFormacao() << "\n"
-                << professor.getNivel() << "\n"
-                << professor.getDisciplina() << "\n"
-                << professor.getMatricula() << "\n"
-                << professor.getSalario() << "\n"
-                << professor.getDepartamento() << "\n"
-                << professor.getCargaHoraria() << "\n"
-                << professor.getDataIngresso() << "\n"
-                << professor.getNome() << "\n"
-                << professor.getCpf() << "\n"
-                << professor.getDataNascimento() << "\n"
-                << professor.getGenero() << "\n"
-                << professor.getRua() << "\n"
-                << professor.getNumero() << "\n"
-                << professor.getBairro() << "\n "
-                << professor.getCidade() << "\n "
-                << professor.getCep() << endl;
-    }
-    arquivo.close();
+void BancoDAO::cadastrarProfessor(Professor novoProfessor)
+{  
+    professoresVector.push_back(novoProfessor);
+    cout << "\n\t===Professor(a) cadastrado com sucesso!===\n" << endl;
 }
 
-void BancoDAO::deletarProfessor(string matricula)
+void BancoDAO::listarProfessores()
 {
-    for (int i = 0; i < professoresvector.size(); i++)
+    for (Professor professor : professoresVector)
     {
-        if (professoresvector[i].getMatricula() == matricula)
+        cout <<"NOME: "<< professor.getNome() << endl;
+        cout <<"CPF: "<< professor.getCpf() << endl;
+        cout <<"MATRICULA: "<< professor.getMatricula() << endl;
+        cout <<"SALARIO: R$"<< professor.getSalario() << endl;
+        cout <<"DEPARTAMENTO: "<< professor.getDepartamento() << endl;
+        cout <<"CARGA HORARIA: "<< professor.getCargaHoraria() << endl;
+        cout <<"DATA DE INGRESSO:"<< professor.getDataIngresso() << endl;
+        cout <<"GENERO: "<< professor.getGenero() << endl;
+        cout <<"RUA: "<< professor.getRua() << endl;
+        cout <<"NUMERO:"<< professor.getNumero() << endl;
+        cout <<"BAIRRO: "<< professor.getBairro() << endl;
+        cout <<"CIDADE: "<< professor.getCidade() << endl;
+        cout <<"CEP: "<< professor.getCep() << endl;
+        cout <<"NIVEL: "<< professor.getNivel() << endl;
+        cout <<"DISCIPLINA: "<< professor.getDisciplina() << endl;
+        cout <<"DATA DE NASCIMENTO: "<< professor.getDataNascimento() << endl;
+    }
+}
+
+void BancoDAO::buscarProfessor(int matricula)
+{
+    for (int i = 0; i < professoresVector.size(); i++)
+    {
+        if (professoresVector[i].getMatricula() == to_string(matricula))
         {
-            professoresvector.erase(professoresvector.begin() + i);
+            cout << professoresVector[i].getNome() << endl;
+            cout << professoresVector[i].getCpf() << endl;
+            cout << professoresVector[i].getMatricula() << endl;
+            cout << professoresVector[i].getSalario() << endl;
+            cout << professoresVector[i].getDepartamento() << endl;
+            cout << professoresVector[i].getCargaHoraria() << endl;
+            cout << professoresVector[i].getDataIngresso() << endl;
+            cout << professoresVector[i].getGenero() << endl;
+            cout << professoresVector[i].getRua() << endl;
+            cout << professoresVector[i].getNumero() << endl;
+            cout << professoresVector[i].getBairro() << endl;
+            cout << professoresVector[i].getCidade() << endl;
+            cout << professoresVector[i].getCep() << endl;
+            cout << professoresVector[i].getNivel() << endl;
+            cout << professoresVector[i].getDisciplina() << endl;
+            cout << professoresVector[i].getDataNascimento() << endl;
+            cout << endl;
+        }
+    }
+}
+
+void BancoDAO::deletarProfessor(int matricula)
+{
+    for (int i = 0; i < professoresVector.size(); i++)
+    {
+        if (professoresVector[i].getMatricula() == to_string(matricula))
+        {
+            professoresVector.erase(professoresVector.begin() + i);
             cout << "Professor deletado com sucesso" << endl;
             break;
         }
     }
 }
 
-void BancoDAO::cadastrarProfessor(Professor professor)
+void BancoDAO::salvarArquivoProfessores()
 {
-    professoresvector.push_back(professor);
-    cout << "\n\t===Professor(a) cadastrado com sucesso!===\n"
-         << endl;
-}
-
-void BancoDAO::listarProfessores() const
-{
-
-    for (const Professor &professor : professoresvector)
+    fstream arquivo;
+    arquivo.open("professores.txt", ios::out);
+    for (Professor novoprofessor : professoresVector)
     {
-
-        cout << professor.getNome() << endl;
-        cout << professor.getCpf() << endl;
-        cout << professor.getMatricula() << endl;
-        cout << professor.getSalario() << endl;
-        cout << professor.getDepartamento() << endl;
-        cout << professor.getCargaHoraria() << endl;
-        cout << professor.getDataIngresso() << endl;
-        cout << professor.getGenero() << endl;
-        cout << professor.getRua() << endl;
-        cout << professor.getNumero() << endl;
-        cout << professor.getBairro() << endl;
-        cout << professor.getCidade() << endl;
-        cout << professor.getCep() << endl;
-        cout << professor.getNivel() << endl;
-        cout << professor.getDisciplina() << endl;
-        cout << professor.getDataNascimento() << endl;
-        cout << endl;
-    }
-}
-
-void BancoDAO::buscarProfessor(string matricula) const
-{
-    for (int i = 0; i < professoresvector.size(); i++)
-    {
-        if (professoresvector[i].getMatricula() == matricula)
-        {
-            cout << professoresvector[i].getNome() << endl;
-            cout << professoresvector[i].getCpf() << endl;
-            cout << professoresvector[i].getMatricula() << endl;
-            cout << professoresvector[i].getSalario() << endl;
-            cout << professoresvector[i].getDepartamento() << endl;
-            cout << professoresvector[i].getCargaHoraria() << endl;
-            cout << professoresvector[i].getDataIngresso() << endl;
-            cout << professoresvector[i].getGenero() << endl;
-            cout << professoresvector[i].getRua() << endl;
-            cout << professoresvector[i].getNumero() << endl;
-            cout << professoresvector[i].getBairro() << endl;
-            cout << professoresvector[i].getCidade() << endl;
-            cout << professoresvector[i].getCep() << endl;
-            cout << professoresvector[i].getNivel() << endl;
-            cout << professoresvector[i].getDisciplina() << endl;
-            cout << professoresvector[i].getDataNascimento() << endl;
-            cout << endl;
-        }
+        arquivo << novoprofessor.getFormacao() << "\n"
+                << novoprofessor.getNivel() << "\n"
+                << novoprofessor.getDisciplina() << "\n"
+                << novoprofessor.getMatricula() << "\n"
+                << std::to_string(novoprofessor.getSalario()) << "\n"
+                << novoprofessor.getDepartamento() << "\n"
+                << novoprofessor.getCargaHoraria() << "\n"
+                << novoprofessor.getDataIngresso() << "\n"
+                << novoprofessor.getNome() << "\n"
+                << novoprofessor.getCpf() << "\n"
+                << novoprofessor.getDataNascimento() << "\n"
+                << novoprofessor.getGenero() << "\n"
+                << novoprofessor.getRua() << "\n"
+                << std::to_string(novoprofessor.getNumero()) << "\n"
+                << novoprofessor.getBairro() << "\n "
+                << novoprofessor.getCidade() << "\n "
+                << novoprofessor.getCep() << endl;
     }
 }
 
@@ -269,7 +231,7 @@ void BancoDAO::salvarArquivoTecnicoAdm()
 }
 
 // Função para cadastrar um novo Técnico ADM
-void BancoDAO::cadastrarTecnicoADM(TecnicoAdm novoTecnicoADM)
+void BancoDAO::cadastrarTecnicoADM(TecnicoAdm &novoTecnicoADM)
 {
     tecnicosADMvector.push_back(novoTecnicoADM);
     cout << "\n\t===TecnicoADM cadastrado com sucesso!===\n"
@@ -277,7 +239,7 @@ void BancoDAO::cadastrarTecnicoADM(TecnicoAdm novoTecnicoADM)
 }
 
 // Função para listar todos os Técnicos ADM
-void BancoDAO::listarTecnicosADM() const
+void BancoDAO::listarTecnicosADM()
 {
     for (const TecnicoAdm &tecnicoADM : tecnicosADMvector)
     {
@@ -302,11 +264,11 @@ void BancoDAO::listarTecnicosADM() const
 }
 
 // Função para deletar um Técnico ADM pelo número de matrícula
-void BancoDAO::deletarTecnicoADM(string matricula)
+void BancoDAO::deletarTecnicoADM(int matricula)
 {
     for (auto it = tecnicosADMvector.begin(); it != tecnicosADMvector.end(); ++it)
     {
-        if (it->getMatricula() == matricula)
+        if (it->getMatricula() == to_string(matricula))
         {
             tecnicosADMvector.erase(it);
             break;
@@ -315,11 +277,11 @@ void BancoDAO::deletarTecnicoADM(string matricula)
 }
 
 // Função para buscar um Técnico ADM pelo número de matrícula
-void BancoDAO::buscarTecnicoADM(string matricula) const
+void BancoDAO::buscarTecnicoADM(int matricula)
 {
     for (const TecnicoAdm &tecnicoADM : tecnicosADMvector)
     {
-        if (tecnicoADM.getMatricula() == matricula)
+        if (tecnicoADM.getMatricula() == to_string(matricula))
         {
             cout << tecnicoADM.getAdicionalProdutividade() << " "
                  << tecnicoADM.getFuncaoDesempenhada() << " "

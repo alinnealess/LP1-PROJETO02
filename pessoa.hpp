@@ -14,7 +14,10 @@ private:
   Endereco endereco;
 
 public:
-  Pessoa() {}
+  //Construtor padrão
+  Pessoa(){};
+  
+  //Construtor parametrizado
   Pessoa(std::string nome, std::string cpf, std::string dataNascimento, std::string genero,
          std::string rua, int numero, std::string bairro, std::string cidade, std::string cep);
      

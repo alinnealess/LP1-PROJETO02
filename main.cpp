@@ -45,8 +45,7 @@ int main()
         {
         case 1:
         {
-            // Cadastrar Professor
-            // Solicita informações do usuário
+             // Cadastrar Professor
             string nome, cpf, dataNascimento, genero, departamento, dataIngresso, matricula;
             int numero, cargaHoraria;
             string rua, bairro, cidade, cep;
@@ -124,15 +123,14 @@ int main()
 
             cout << "\t\n--Informe os dados do TecnicoADM--" << endl;
             cout << "Nome: ";
-            cin.ignore();
             getline(cin, nome);
             cout << "CPF: ";
-            cin >> cpf;
+            getline(cin, cpf);
             cout << "Data de Nascimento [xx.xx.xxxx]: ";
-            cin >> dataNascimento;
+            getline(cin, dataNascimento);
             cout << "Genero [Feminino = F, Masculino = M] " << endl;
             cout << "Genero: ";
-            cin >> genero;
+            getline(cin, genero);
 
             cout << "\n--Endereco--" << endl;
             cout << "Rua: ";
@@ -147,7 +145,7 @@ int main()
             cin.ignore();
             getline(cin, cidade);
             cout << "CEP: ";
-            cin >> cep;
+            getline(cin, cep);
             cout << "Funcao Desempenhada: ";
             cin.ignore();
             getline(cin, funcaoDesempenhada);
@@ -186,7 +184,7 @@ int main()
         case 5:
         {
             // Deletar Professor
-            string matricula;
+            int matricula;
             cout << "Informe a matricula do Professor a ser deletado: ";
             cin >> matricula;
             banco.deletarProfessor(matricula);
@@ -197,7 +195,7 @@ int main()
         case 6:
         {
             // Deletar TecnicoADM
-            string matricula;
+            int matricula;
             cout << "Informe a matricula do TecnicoADM a ser deletado: ";
             cin >> matricula;
             banco.deletarTecnicoADM(matricula);
@@ -208,7 +206,7 @@ int main()
         case 7:
         {
             // Buscar Professor
-            string matricula;
+            int matricula;
             cout << "Informe a matricula do Professor a ser buscado: ";
             cin >> matricula;
             banco.buscarProfessor(matricula);
@@ -218,7 +216,7 @@ int main()
         case 8:
         {
             // Buscar TecnicoADM
-            string matricula;
+            int matricula;
             cout << "Informe a matricula do TecnicoADM a ser buscado: ";
             cin >> matricula;
             banco.buscarTecnicoADM(matricula);

@@ -1,43 +1,36 @@
 #ifndef BANCODAO_HPP
 #define BANCODAO_HPP
 
-
+#include "funcionario.hpp"
 #include "professor.hpp"
 #include "tecnicoAdm.hpp"
 #include <vector>
 
-class BancoDAO {
+class BancoDAO
+{
 private:
-    std::vector<Professor> professoresvector;
+    std::vector<Professor> professoresVector;
     std::vector<TecnicoAdm> tecnicosADMvector;
 
 public:
-    // Construtor que inicializa os vetores
-    BancoDAO();
-    
-    // Métodos para ler dados do arquivo
+ 
+    // ######Professores#########
+    //  Métodos para ler dados do arquivo
     void lerArquivoProfessores();
-    void lerArquivoTecnicoAdm();
+    void salvarArquivoProfessores(); // Métodos para salvar dados do arquivo
+    void cadastrarProfessor(Professor novoProfessor); // Métodos para cadastrar professores
+    void listarProfessores(); // Métodos para listar professores
+    void deletarProfessor(int matricula);// Métodos para deletar professores e tecnicosADM
+    void buscarProfessor(int matricula); // Métodos para buscar professores e tecnicosADM
 
-    // Métodos para salvar dados do arquivo
-    void salvarArquivoProfessores();
-    void salvarArquivoTecnicoAdm();
 
-    // Métodos para cadastrar e listar professores
-    void cadastrarProfessor(Professor professor);
-    void listarProfessores() const;
-
-    // Métodos para cadastrar e listar tecnicosADM
-    void cadastrarTecnicoADM(TecnicoAdm tecnicoADM);
-    void listarTecnicosADM() const;
-
-    // Métodos para deletar professores e tecnicosADM
-    void deletarProfessor(std::string matricula);
-    void deletarTecnicoADM(std::string matricula);
-
-    // Métodos para buscar professores e tecnicosADM
-    void buscarProfessor(std::string matricula) const;
-    void buscarTecnicoADM(std::string matricula) const;
+    // ######Tecnicos Administrativos######
+    void lerArquivoTecnicoAdm(); //Métodos para ler dados do arquivo
+    void salvarArquivoTecnicoAdm(); //Métodos para salvar dados do arquivo
+    void cadastrarTecnicoADM(TecnicoAdm& novoTecnicoADM); //Métodos para cadastrar tecnicosADM
+    void listarTecnicosADM(); // Métodos para listar tecnicosADM
+    void deletarTecnicoADM(int matricula); //Métodos para deletar professores e tecnicosADM
+    void buscarTecnicoADM(int matricula); //Métodos para buscar professores e tecnicosADM
 };
 
 #endif

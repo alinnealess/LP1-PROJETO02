@@ -2,6 +2,7 @@
 
 using namespace std;
 
+
 // Construtor parametrizado
 Professor::Professor(std::string formacao, std::string nivel, std::string disciplina,
                      std::string matricula, float salario, std::string departamento, int cargaHoraria, std::string dataIngresso,
@@ -15,34 +16,34 @@ Professor::Professor(std::string formacao, std::string nivel, std::string discip
       disciplina(disciplina) {}
 
 // Métodos getter e setter para o nível
-string Professor::getNivel() const
+string Professor::getNivel() 
 {
-    return this->nivel;
+    return nivel;
 }
 
 void Professor::setNivel(string nivel)
 {
-    this->nivel = nivel;
+    nivel = nivel;
 }
 
 // Métodos getter e setter para a formação
-string Professor::getFormacao() const
+string Professor::getFormacao() 
 {
-    return this->formacao;
+    return formacao;
 }
 
 void Professor::setFormacao(string formacao)
 {
-    this->formacao = formacao;
+    formacao = formacao;
 }
 
 // Métodos getter e setter para a disciplina
-string Professor::getDisciplina() const
+string Professor::getDisciplina()
 {
-    return this->disciplina;
+    return disciplina;
 }
 
 void Professor::setDisciplina(string disciplina)
 {
-    this->disciplina = disciplina;
+    disciplina = disciplina;
 }

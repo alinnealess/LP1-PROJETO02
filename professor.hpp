@@ -6,15 +6,18 @@
 
 class Professor : public Pessoa, public Funcionario
 {
-public:
-    std::string nivel;
-    std::string formacao;
 
 private:
+    std::string nivel;
+    std::string formacao;
     std::string disciplina;
 
 public:
-    //Professor(){}
+    Professor() {}
+    Professor(std::string formacao, std::string nivel, std::string disciplina)
+        : nivel(nivel),
+          formacao(formacao),
+          disciplina(disciplina) {}
     //  Construtor parametrizado
     Professor(std::string formacao, std::string nivel, std::string disciplina,
               std::string matricula, float salario, std::string departamento, int cargaHoraria, std::string dataIngresso,
@@ -24,15 +27,15 @@ public:
               std::string bairro, std::string cidade, std::string cep);
 
     // Métodos getter e setter para o nível
-    std::string getNivel() const;
+    std::string getNivel() ;
     void setNivel(std::string nivel);
 
     // Métodos getter e setter para a formação
-    std::string getFormacao() const;
+    std::string getFormacao() ;
     void setFormacao(std::string formacao);
 
     // Métodos getter e setter para a disciplina
-    std::string getDisciplina() const;
+    std::string getDisciplina() ;
     void setDisciplina(std::string disciplina);
 };
 
